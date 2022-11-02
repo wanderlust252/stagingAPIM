@@ -11,7 +11,7 @@
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "pretier:fix": "prettier --write",
-    "test": "yarn pretier:check && npm run pretier:fix && yarn lint ",
+    "test": "yarn pretier:check && yarn pretier:fix && yarn lint ",
     "prepare": "husky install"
   },
   "keywords": [],
