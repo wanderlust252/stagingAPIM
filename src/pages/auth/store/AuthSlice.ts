@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+// export interface AuthInitialState {
+//   access_token?: string;
+//   profile?: UserProfile;
+// }
 
+// const initialState: AuthInitialState = {};
 const authSlice = createSlice({
   name: 'auth',
   initialState: { loginStatus: false, authInfo: {} },
