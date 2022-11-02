@@ -11,9 +11,8 @@
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx,json}",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "pretier:fix": "prettier --write",
-    "test": "npm run pretier:check && npm run pretier:fix && npm run lint ",
-    "prepare": "husky install",
-    "lintStaged": "npx lint-staged"
+    "test": "yarn pretier:check && npm run pretier:fix && yarn lint ",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "quocchien",
@@ -54,8 +53,6 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.16",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.2",
-    "@types/ckeditor__ckeditor5-build-classic": "^29.0.1",
-    "@types/ckeditor__ckeditor5-core": "^28.0.10",
     "@types/jest": "^27.4.1",
     "@types/loadable__component": "^5.13.4",
     "@types/react": "^18.0.21",
@@ -81,7 +78,6 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.0",
-    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.5.3",
     "node-sass": "^7.0.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
@@ -98,12 +94,5 @@
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "^4.6.0",
     "webpack-merge": "^5.7.3"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint",
-      "npm run format",
-      "git add ."
-    ]
   }
 }

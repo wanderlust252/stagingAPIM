@@ -44,45 +44,43 @@ const Header = () => {
   // };
 
   return (
-    <>
-      <header
-        style={{ position: 'sticky', zIndex: '10000000000' }}
-        className="header d-flex justify-content-between align-items-center bg-color-light top-0">
-        <Row>
-          <Col span={12}>
-            <Typography.Title level={3} className="margin-0">
-              {location.pathname === '/order' ? 'Danh sách đơn hàng' : ''}
-            </Typography.Title>
-            {/* <a href="javscript:;" className="header__toggle" onClick={toggleLayout}>
+    <header
+      style={{ position: 'sticky', zIndex: '10000000000' }}
+      className="header d-flex justify-content-between align-items-center bg-color-light top-0">
+      <Row>
+        <Col span={21}>
+          <Typography.Title level={3} className="margin-0">
+            {location.pathname === '/order' ? 'Danh sách đơn hàng' : ''}
+          </Typography.Title>
+          {/* <a href="javscript:;" className="header__toggle" onClick={toggleLayout}>
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </a> */}
-          </Col>
-          <Col span={12} className="text-right">
-            <Space>
-              <div>
-                <Select
-                  dropdownStyle={{ padding: '0.7rem 0' }}
-                  defaultValue="vi"
-                  className="language__select  antd-select-custom"
-                  bordered={false}
-                  style={{ width: 150, zIndex: '10000000000' }}>
-                  <Option value="vi">Korean</Option>
-                  <Option value="en">English</Option>
-                </Select>
-              </div>
-              <Dropdown overlay={() => <Menu items={items} />} placement="bottom">
-                <Avatar
-                  size="large"
-                  src={'https://i.pravatar.cc/300'}
-                  style={{ backgroundColor: '#87d068' }}
-                  icon={<i className="icon icon-bell2" />}
-                />
-              </Dropdown>
-            </Space>
-          </Col>
-        </Row>
-      </header>
-    </>
+        </Col>
+        <Col span={3} className="text-right">
+          <Space>
+            <div>
+              <Select
+                dropdownStyle={{ padding: '0.7rem 0' }}
+                defaultValue="vi"
+                className="language__select  antd-select-custom"
+                bordered={false}
+                style={{ width: 150, zIndex: '10000000000' }}>
+                <Option value="vi">Korean</Option>
+                <Option value="en">English</Option>
+              </Select>
+            </div>
+            <Dropdown overlay={() => <Menu items={items} />} placement="bottom">
+              <Avatar
+                size="large"
+                src={'https://i.pravatar.cc/300'}
+                style={{ backgroundColor: '#87d068' }}
+                icon={<i className="icon icon-bell2" />}
+              />
+            </Dropdown>
+          </Space>
+        </Col>
+      </Row>
+    </header>
   );
 };
 
