@@ -1,8 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/dist/query/react";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 
-import auth from "@/pages/auth/store/AuthSlice";
-import common from "./common/commonSlice";
+import auth from '@/pages/auth/store/AuthSlice';
+import common from './common/commonSlice';
 
 const rootReducer = combineReducers({
   common,
@@ -13,7 +13,7 @@ const middlewareHandler = (getDefaultMiddleware: any) => {
   return [...getDefaultMiddleware()];
 };
 //API slice Will include automatically generated redux reducer And a custom middleware
- const rootStore = configureStore({
+const rootStore = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => middlewareHandler(getDefaultMiddleware),
 });
@@ -26,5 +26,3 @@ export type AppDispatch = typeof rootStore.dispatch;
 
 setupListeners(rootStore.dispatch);
 export default rootStore;
-
-

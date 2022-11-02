@@ -179,7 +179,8 @@ const Dashboard: React.FC = (): JSX.Element => {
           size="large"
           type={'primary'}
           onClick={toggleCalc}
-          className="full-width">
+          className="full-width"
+        >
           검색
         </Button>
         {hasCalc && (

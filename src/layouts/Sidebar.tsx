@@ -79,13 +79,15 @@ const Sidebar = () => {
       collapsible
       collapsed={collapse}
       style={{ position: 'sticky', zIndex: '99999999999999999', height: '100vh' }}
-      className="position-rel top-0">
+      className="position-rel top-0"
+    >
       <div className="display-flex justify-content-center logo">
         {/*<img src={logo} alt="logo" />*/}
         <div className="collapse-sidebar">
           <button
             className="toggleLayout border-none full-width position-abs bottom-0 cursor-pointer"
-            onClick={toggleLayout}>
+            onClick={toggleLayout}
+          >
             {/* <LeftCircleOutlined className="font-size-16" /> */}
             {collapse ? (
               <RightCircleOutlined className="font-size-20 color-light" />

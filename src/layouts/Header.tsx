@@ -46,7 +46,8 @@ const Header = () => {
   return (
     <header
       style={{ position: 'sticky', zIndex: '10000000000' }}
-      className="header d-flex justify-content-between align-items-center bg-color-light top-0">
+      className="header d-flex justify-content-between align-items-center bg-color-light top-0"
+    >
       <Row>
         <Col span={21}>
           <Typography.Title level={3} className="margin-0">
@@ -64,7 +65,8 @@ const Header = () => {
                 defaultValue="vi"
                 className="language__select  antd-select-custom"
                 bordered={false}
-                style={{ width: 150, zIndex: '10000000000' }}>
+                style={{ width: 150, zIndex: '10000000000' }}
+              >
                 <Option value="vi">Korean</Option>
                 <Option value="en">English</Option>
               </Select>

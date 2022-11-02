@@ -10,9 +10,7 @@ const Login: React.FC = (): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmitForm = async (values: any) => {
-
-  };
+  const onSubmitForm = async (values: any) => {};
   return (
     <div className="login full-screen display-flex-center justify-content-center position-rel">
       <div className="login__wrap">
@@ -25,7 +23,8 @@ const Login: React.FC = (): JSX.Element => {
           name="normal_login"
           className="login-form"
           initialValues={{ remember: true }}
-          onFinish={onSubmitForm}>
+          onFinish={onSubmitForm}
+        >
           <Form.Item name="email" rules={[{ required: true, message: 'Vui lòng nhập email!' }]}>
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -46,7 +45,8 @@ const Login: React.FC = (): JSX.Element => {
               type="primary"
               htmlType="submit"
               className="login-form-button primary-bg font-size-16 text-uppercase"
-              loading={loading}>
+              loading={loading}
+            >
               <span className="font-size-16">Đăng nhập</span>
             </Button>
           </Form.Item>
