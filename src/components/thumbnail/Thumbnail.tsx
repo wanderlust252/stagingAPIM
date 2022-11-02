@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Image, Button, Progress, Tooltip } from 'antd';
 import { UploadOutlined, CloseOutlined } from '@ant-design/icons';
 import { APP_CONFIG } from '@/utils/env';
-import { BaseApi } from 'utils/baseApi';
 import { ThumbnailPropModel } from './ThumbnailModel';
 import './_thumbnail.scss';
-
-const baseApi = new BaseApi('');
 
 const ThumbnailInput = (props: ThumbnailPropModel) => {
   const [imgLink, setImgLink] = useState(props.link);
@@ -27,7 +24,7 @@ const ThumbnailInput = (props: ThumbnailPropModel) => {
       },
     };
     $event.optionUpload = options;
-    const fileData = await baseApi.upload($event);
+    const fileData: any = [];
     setIsUpload(false);
     if (!fileData) {
       return;

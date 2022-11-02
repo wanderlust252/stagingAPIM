@@ -22,8 +22,7 @@ const FilterBox: React.FC<FilterBoxProps> = (props) => {
               visible={visible}
               onVisibleChange={(visible: boolean) => setVisible(visible)}
               content={dropdownRender}
-              trigger="click"
-            >
+              trigger="click">
               <Button type="link" className="color-grey" onClick={() => setVisible(true)} style={{ padding: '0px' }}>
                 <span>Lọc</span>
                 <span style={{ fontSize: '8px', marginLeft: '5px' }}>

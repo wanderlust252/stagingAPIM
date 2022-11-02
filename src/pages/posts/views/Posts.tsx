@@ -1,18 +1,7 @@
 import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import requestApi from '../../../apis/config';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
-const fetchData = async (props: any) => {
-  console.log(props);
-  const data = await requestApi.post<string, string>('posts', {
-    id: 1,
-    title: '...',
-    body: '...',
-    userId: 1,
-  });
-};
-
-const Posts: React.FC = (): JSX.Element => {
+const Posts: React.FC = () => {
   const { data } = useQuery<any[]>(['todos', { _limit: 10, _page: 10 }]);
   const queryClient = useQueryClient();
   queryClient.setQueryData(['keys'], ['todos', { _limit: 10, _page: 10 }]);

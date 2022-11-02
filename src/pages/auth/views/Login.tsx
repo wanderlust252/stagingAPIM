@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
 // import { Form, Checkbox, Input, Button , notification, Image } from 'antd';
 
 import '../styles/login.scss';
 
 const Login: React.FC = (): JSX.Element => {
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const [loading] = useState(false);
 
-  const onSubmitForm = async (values: any) => {};
   return (
     <div className="login full-screen display-flex-center justify-content-center position-rel">
       <div className="login__wrap">
@@ -22,9 +19,7 @@ const Login: React.FC = (): JSX.Element => {
           wrapperCol={{ span: 24 }}
           name="normal_login"
           className="login-form"
-          initialValues={{ remember: true }}
-          onFinish={onSubmitForm}
-        >
+          initialValues={{ remember: true }}>
           <Form.Item name="email" rules={[{ required: true, message: 'Vui lòng nhập email!' }]}>
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -45,8 +40,7 @@ const Login: React.FC = (): JSX.Element => {
               type="primary"
               htmlType="submit"
               className="login-form-button primary-bg font-size-16 text-uppercase"
-              loading={loading}
-            >
+              loading={loading}>
               <span className="font-size-16">Đăng nhập</span>
             </Button>
           </Form.Item>
@@ -63,7 +57,7 @@ const Login: React.FC = (): JSX.Element => {
                 Đăng ký tài khoản
               </a> */}
 
-              <a href="javascript:;" className="login-form-forgot primary-color-txt font-size-16">
+              <a href="login" className="login-form-forgot primary-color-txt font-size-16">
                 Quên mật khẩu
               </a>
             </div>
