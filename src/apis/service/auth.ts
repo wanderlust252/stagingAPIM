@@ -1,23 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import requestApi, { ResponseApi } from '../config';
+import requestApi from '../config';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 import { removeStorageItem, setStorageItem } from '@/utils/storage';
-import * as CONSTANT from '../../contants';
-interface Account {
-  username: string;
-  password: string;
-}
+import * as CONSTANT from '@/constants';
+import { Account, LoginResponse, LogoutResponse, ResponseApi } from '@/interfaces';
 
-interface LoginResponse {
-  token: string;
-  refreshToken: string;
-}
-
-interface LogoutResponse {
-  token: string;
-  refreshToken: string;
-}
 const useLogin = () => {
   const url = '/login';
   return useMutation<LoginResponse, ResponseApi, Account, number>(async (value) => {
