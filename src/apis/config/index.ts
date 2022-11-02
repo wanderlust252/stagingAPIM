@@ -1,44 +1,50 @@
-import { APP_CONFIG } from '@/utils/env';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Canceler } from 'axios';
+import { APP_CONFIG } from './../../utils/env';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 import * as CONSTANT from '../../contants';
 import { getStorageItem, setStorageItem } from '@/utils/storage';
-import { mapData, mapError } from './mapData';
 
-const { CancelToken } = axios;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TODO = any;
 
-interface PromiseWithCancel<R> extends Promise<R> {
-  cancel?: () => void;
+export interface ResponseApi<T = TODO> {
+  code: string;
+  message: string;
+  data: T;
 }
 
-class Request {
-  api: AxiosInstance;
+class RequestApi {
+  private static instance: RequestApi;
 
-  constructor(props: any) {
-    console.log('aaa');
-    this.api = axios.create({
-      // baseURL: process.env.REACT_APP_BASE_URL,
-      baseURL: props?.url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    this.api.interceptors.request.use((config) => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private constructor() {}
+
+  static getInstance(url?: string) {
+    if (RequestApi.instance) {
+      return RequestApi.instance;
+    }
+    axios.defaults.baseURL = url;
+    axios.defaults.headers.common = {
+      'Content-Type': 'application/json',
+    };
+
+    axios.interceptors.request.use((config) => {
       if (config && config.headers) {
         const token = getStorageItem(CONSTANT.ACCESS_TOKEN);
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
       }
+
       return config;
     });
 
-    this.api.interceptors.response.use(
-      (response) =>
-        // Do something with response data
-        response,
-      async (error) => {
+    axios.interceptors.response.use(
+      // Do something with response data
+      (response: AxiosResponse) => response.data,
+      // Do something with response error
+      async (error: AxiosError) => {
         const { response } = error;
-        // Do something with response error
+
         if (axios.isCancel(error)) {
           console.debug('Request canceled', error.message);
         }
@@ -59,103 +65,38 @@ class Request {
               const res = await axios.post(url, data);
               setStorageItem(CONSTANT.ACCESS_TOKEN, res.data.data.token);
               setStorageItem(CONSTANT.REFRESH_TOKEN, res.data.data.refreshToken);
+              axios.defaults.headers.common.Authorization = `Bearer ${res.data.data.token}`;
             } catch (_error) {
-              console.log('error', _error);
+              console.error('error', _error);
               window.location.href = '/login';
             }
           }
         }
-        return window.Promise.reject(error);
+        return Promise.reject(error.response);
       },
     );
+    return new RequestApi();
   }
 
-  setToken = (token: string) => {
-    this.api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  get = <T = TODO>(url: string): Promise<ResponseApi<T>> => {
+    return axios.get(url);
   };
 
-  get = <T = any, R = AxiosResponse<T>>(url: string, config: AxiosRequestConfig = {}): PromiseWithCancel<R> => {
-    let cancel: Canceler;
-    const apiConfig = {
-      params: {
-        ...config.params,
-      },
-      ...config,
-      cancelToken: new CancelToken((c) => {
-        cancel = c;
-      }),
-    };
-    const request: PromiseWithCancel<R> = this.api.get(url, apiConfig).then(mapData).catch(mapError);
-
-    request.cancel = () => cancel();
-    return request;
+  post = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+    return axios.post(url, body);
   };
 
-  post = <T = any, R = AxiosResponse<T>>(url: string, body?: any, config: AxiosRequestConfig = {}) => {
-    let cancel: Canceler;
-    const apiConfig = {
-      params: {
-        ...config.params,
-      },
-      ...config,
-      cancelToken: new CancelToken((c) => {
-        cancel = c;
-      }),
-    };
-    const request: PromiseWithCancel<R> = this.api.post(url, body, apiConfig).then(mapData).catch(mapError);
-    request.cancel = () => cancel();
-    return request;
+  put = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+    return axios.put(url, body);
   };
 
-  put = <T = any, R = AxiosResponse<T>>(url: string, body?: any, config: AxiosRequestConfig = {}) => {
-    let cancel: Canceler;
-    const apiConfig = {
-      params: {
-        ...config.params,
-      },
-      ...config,
-      cancelToken: new CancelToken((c) => {
-        cancel = c;
-      }),
-    };
-    const request: PromiseWithCancel<R> = this.api.put(url, body, apiConfig).then(mapData).catch(mapError);
-    request.cancel = () => cancel();
-    return request;
+  patch = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+    return axios.patch(url, body);
   };
 
-  patch = <T = any, R = AxiosResponse<T>>(url: string, body?: any, config: AxiosRequestConfig = {}) => {
-    let cancel: Canceler;
-    const apiConfig = {
-      params: {
-        ...config.params,
-      },
-      ...config,
-      cancelToken: new CancelToken((c) => {
-        cancel = c;
-      }),
-    };
-    const request: PromiseWithCancel<R> = this.api.patch(url, body, apiConfig).then(mapData).catch(mapError);
-    request.cancel = () => cancel();
-    return request;
-  };
-
-  delete = <T = any, R = AxiosResponse<T>>(url: string, config: AxiosRequestConfig = {}): PromiseWithCancel<R> => {
-    let cancel: Canceler;
-    const apiConfig = {
-      params: {
-        ...config.params,
-      },
-      ...config,
-      cancelToken: new CancelToken((c) => {
-        cancel = c;
-      }),
-    };
-    const request: PromiseWithCancel<R> = this.api.delete(url, apiConfig).then(mapData).catch(mapError);
-    request.cancel = () => cancel();
-    return request;
+  delete = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+    return axios.delete(url, { data: body });
   };
 }
 
-const requestApi = new Request({ url: APP_CONFIG.apiUrl });
-
-export default requestApi;
+export default RequestApi.getInstance(APP_CONFIG.apiUrl);
