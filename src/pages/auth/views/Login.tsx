@@ -1,6 +1,6 @@
-import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form } from 'antd';
+import React from 'react';
 import InputField from '../../../components/FormField/InputField';
 import '../styles/login.scss';
 
@@ -42,7 +42,7 @@ const Login: React.FC = (): JSX.Element => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button full-w-btn">
+            <Button type="primary" htmlType="submit" className="login-form-button full-w-btn" loading={true}>
               Log in
             </Button>
           </Form.Item>
