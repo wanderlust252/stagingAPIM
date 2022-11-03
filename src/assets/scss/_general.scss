@@ -13,40 +13,28 @@
 }
 
 p {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
 }
 
 html {
   overflow-y: auto;
   overflow-x: hidden;
-  font-size: 20px;
+  font-size: 68%;
   scroll-behavior: smooth;
   font-family: $font_primary;
 
-  @media screen and (min-width: 1441px) and (max-width: 1680px) {
-    font-size: 17px;
+  @media screen and (min-width: 480px) {
+    font-size: 65%;
   }
 
-  @media screen and (min-width: 1281px) and (max-width: 1440px) {
-    font-size: 15px;
+  @media screen and (min-width: 768px) {
+    font-size: 62.5%;
   }
 
-  @media screen and (min-width: 1025px) and (max-width: 1280px) {
-    font-size: 14px;
-  }
 
-  @media screen and (min-width: 992px) and (max-width: 1024px) {
-    font-size: 16px;
-  }
 
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    font-size: 15px;
-  }
 
-  @media screen and (max-width: 767px) {
-    font-size: 14px;
-  }
 }
 
 body {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 import navigation from './../routes/_nav';
-import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
+import { LeftCircleOutlined, PieChartOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { NavItem } from './models/NavModel';
 import './styles/_sidebar.scss';
 
@@ -20,8 +20,9 @@ const { SubMenu } = Menu;
 const rootSubmenuKeys: string[] = [];
 
 const Sidebar = () => {
-  const collapse = useAppSelector((state: any) => state.common.isCloseSidebar);
+  // const hasSidebar = useAppSelector((state: any) => state.common.hasSidebar);
   const dispatch = useAppDispatch();
+  const [hasSidebar, setHasSideBar] = useState(true);
 
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
@@ -47,7 +48,7 @@ const Sidebar = () => {
   };
 
   const toggleLayout = (): void => {
-    dispatch(collapseSidebar());
+    setHasSideBar((prev) => !prev);
   };
 
   function renderMenuItem(item: NavItem) {
@@ -75,34 +76,27 @@ const Sidebar = () => {
 
   return (
     <Layout.Sider
-      trigger={null}
       collapsible
-      collapsed={collapse}
+      theme={'dark'}
+      collapsed={hasSidebar}
+      onCollapse={toggleLayout}
       style={{ position: 'sticky', zIndex: '99999999999999999', height: '100vh' }}
       className="position-rel top-0">
-      <div className="display-flex justify-content-center logo">
-        {/*<img src={logo} alt="logo" />*/}
-        <div className="collapse-sidebar">
-          <button
-            className="toggleLayout border-none full-width position-abs bottom-0 cursor-pointer"
-            onClick={toggleLayout}>
-            {/* <LeftCircleOutlined className="font-size-16" /> */}
-            {collapse ? (
-              <RightCircleOutlined className="font-size-20 color-light" />
-            ) : (
-              <LeftCircleOutlined className="font-size-20 color-light" />
-            )}
-          </button>
-        </div>
-      </div>
-      <Menu className="sidebar-full-height" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange}>
+      <div className="display-flex justify-content-center logo">{/*<img src={logo} alt="logo" />*/}</div>
+      <Menu
+        theme={'dark'}
+        className="sidebar-full-height"
+        mode="inline"
+        openKeys={openKeys}
+        onOpenChange={onOpenChange}>
         {renderMenus()}
       </Menu>
-      {/* <PermissionRoute navConfig={navigation} theme="dark" mode="inline" />
-      <i
-        onClick={toggleSidebar}
-        className={collapse ? 'icon-arrow-left icon-nav icon-nav__close' : 'icon-arrow-left icon-nav icon-nav__open'}
-      ></i> */}
+
+      {/*<button*/}
+      {/*  onClick={toggleLayout}*/}
+      {/*  className={collapse ? 'icon-arrow-left icon-nav icon-nav__close' : 'icon-arrow-left icon-nav icon-nav__open'}>*/}
+      {/*  toggle*/}
+      {/*</button>*/}
     </Layout.Sider>
   );
 };

@@ -5,14 +5,10 @@ const Posts = React.lazy(() => import('@/pages/posts/views/Posts'));
 
 const routes = [
   { path: '/', name: '대시보드', component: Dashboard },
+  // { path: '/transactions', name: '대시보드', component: Dashboard },
   {
     path: '/posts',
     name: 'posts',
-    component: Posts,
-  },
-  {
-    path: '/posts/add',
-    name: 'add posts',
     component: Posts,
   },
 ];
