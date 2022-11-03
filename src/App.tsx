@@ -1,9 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import Loadable from 'react-loadable';
 import loadable from '@loadable/component';
 import 'antd/dist/antd.css';
-// import './../../assets/scss/_style.scss';
+import '@/assets/scss/_style.scss';
 
 // const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 

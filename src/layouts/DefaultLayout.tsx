@@ -42,7 +42,7 @@ const DefaultLayout = () => {
         <Suspense fallback={loading()}>
           <Header />
         </Suspense>
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+        <Content style={{ margin: '24px 16px 0', overflow: 'initial', padding: '10px' }}>
           <div className="bg-main position-rel">
             <Suspense fallback={loading()}>
               <Routes>
