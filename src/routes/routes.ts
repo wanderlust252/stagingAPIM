@@ -1,9 +1,11 @@
-import React from 'react';
 
+import React from 'react';
 const Dashboard = React.lazy(() => import('@/pages/dashboard/views/Dashboard'));
 const Posts = React.lazy(() => import('@/pages/posts/views/Posts'));
 const Setting = React.lazy(() => import('@/pages/setting/views/index'));
+const Agents = React.lazy(() => import('@/pages/agents/views/Agents'));
 const Login = React.lazy(() => import('@/pages/auth/views/Login'));
+
 const routes = [
   { path: '/', name: '대시보드', component: Dashboard },
   { path: '/setting', name: '', component: Setting },
@@ -14,10 +16,13 @@ const routes = [
     component: Login,
   },
   {
-    path: '/posts',
-    name: 'posts',
-    component: Posts,
+    path: '/agents/*',
+    name: 'agents',
+    component: Agents,
   },
 ];
 
 export default routes;
+
+
+

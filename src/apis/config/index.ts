@@ -1,4 +1,4 @@
-import { APP_CONFIG } from './../../utils/env';
+import { APP_CONFIG } from '@/utils/env';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, Canceler } from 'axios';
 import * as CONSTANT from '../../contants';
 import { getStorageItem, setStorageItem } from '@/utils/storage';
