@@ -4,9 +4,11 @@ import routes from './../routes';
 import { Spin } from 'antd';
 import styled from 'styled-components';
 
+export interface IAgentsProps {}
+
 const WrapperStyled = styled.section``;
 
-const Agents: React.FC = ({}) => {
+const Agents: React.FC<IAgentsProps> = ({}) => {
   return (
     <WrapperStyled>
       <Routes>

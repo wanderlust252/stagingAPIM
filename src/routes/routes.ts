@@ -1,3 +1,4 @@
+
 import React from 'react';
 const Dashboard = React.lazy(() => import('@/pages/dashboard/views/Dashboard'));
 const Posts = React.lazy(() => import('@/pages/posts/views/Posts'));
@@ -22,3 +23,6 @@ const routes = [
 ];
 
 export default routes;
+
+
+

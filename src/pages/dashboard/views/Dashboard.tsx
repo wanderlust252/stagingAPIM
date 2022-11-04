@@ -82,7 +82,6 @@ export default function Dashboard() {
         ))}
       </Row>
       <Divider />
-      <span>Copyright © APIMP Admin Corp. All Rights Reserved.</span>
     </WrapperStyled>
   );
 }
