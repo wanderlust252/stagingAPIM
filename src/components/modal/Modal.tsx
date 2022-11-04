@@ -1,26 +1,33 @@
 import { Modal } from 'antd';
 import React, { ReactNode } from 'react';
-import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
-interface IModalProps {
+export interface IModalProps {
   isModalOpen: boolean;
   title: ReactNode;
   setIsModalOpen: (value: boolean) => void;
   content: ReactNode;
-  actionDispatch?: () => void;
+  callback?: () => void;
+  style?: React.CSSProperties;
 }
+
+const StyledModal = styled(Modal)`
+  &&&.ant-modal {
+    top: 50px;
+  }
+`;
 const ModalComponent: React.FC<IModalProps> = ({
   content,
-  actionDispatch,
+  callback,
   isModalOpen,
   setIsModalOpen,
   title,
+  style,
 }: IModalProps) => {
-  const dispatch = useDispatch();
   const handleOk = () => {
     setIsModalOpen(false);
     // handle action
-    dispatch(actionDispatch);
+    if (callback) callback();
   };
 
   const handleCancel = () => {
@@ -28,11 +35,16 @@ const ModalComponent: React.FC<IModalProps> = ({
   };
 
   return (
-    <>
-      <Modal title={title} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        {content}
-      </Modal>
-    </>
+    <StyledModal
+      style={style}
+      destroyOnClose
+      zIndex={100000}
+      title={title}
+      open={isModalOpen}
+      onOk={handleOk}
+      onCancel={handleCancel}>
+      {content}
+    </StyledModal>
   );
 };
 

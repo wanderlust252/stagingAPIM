@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <header
-      style={{ position: 'sticky', zIndex: '10000000000' }}
+      style={{ position: 'sticky', zIndex: '1000' }}
       className="header d-flex justify-content-between align-items-center bg-color-light top-0">
       <Row>
         <Col span={21}>

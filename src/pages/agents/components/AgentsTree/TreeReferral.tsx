@@ -46,9 +46,13 @@ const treeData: DataNode[] = [
 ];
 
 const WrapperStyled = styled.div`
+  margin-top: 1rem;
   padding: 1rem 1.5rem;
   .antd-input {
     border-radius: 4px;
+  }
+  .content {
+    margin-top: 2rem;
   }
 `;
 
@@ -58,8 +62,8 @@ const TreeReferral = () => {
   };
   return (
     <WrapperStyled>
-      <Input placeholder={'에이전트명을 입력해주세요'} />
-      <div className={'agent-tree__content'}>
+      <Input size={'middle'} placeholder={'에이전트명을 입력해주세요'} />
+      <div className={'content'}>
         <Tree switcherIcon={<DownOutlined />} defaultExpandedKeys={['0-0-0']} onSelect={onSelect} treeData={treeData} />
       </div>
     </WrapperStyled>

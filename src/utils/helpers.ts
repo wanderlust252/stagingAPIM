@@ -1,4 +1,5 @@
 import { APP_CONFIG } from '@/utils/env';
+import { ObjAny } from '@/common/interface';
 
 export const getCookie = (cname: string | undefined) => {
   if (!cname) {
@@ -142,4 +143,11 @@ export const getBase64 = (file: File) => {
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
+};
+
+export const handleFilterSelectOptions = (inputValue: string, option: any) => {
+  return (
+    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
+    option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
+  );
 };

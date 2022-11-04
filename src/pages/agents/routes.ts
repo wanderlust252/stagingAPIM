@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Agenstree = React.lazy(() => import('./components/AgentsTree'));
+const AgentsTree = React.lazy(() => import('./components/AgentsTree'));
 const List = React.lazy(() => import('./components/List'));
 const CashTransactions = React.lazy(() => import('./components/CashTransactions'));
 const PointTransactions = React.lazy(() => import('./components/PointTransactions'));
@@ -21,7 +21,7 @@ const routes = [
     name: 'point transactions',
     element: PointTransactions,
   },
-  { path: '*', name: 'agent tree', element: Agenstree },
+  { path: '*', name: 'agent tree', element: AgentsTree },
 ];
 
 export default routes;
