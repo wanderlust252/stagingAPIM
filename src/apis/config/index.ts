@@ -14,6 +14,7 @@ class Request {
   api: AxiosInstance;
 
   constructor(props: any) {
+    console.log('aaa');
     this.api = axios.create({
       // baseURL: process.env.REACT_APP_BASE_URL,
       baseURL: props?.url,

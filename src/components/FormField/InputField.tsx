@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import './InputField.scss';
 interface InputFieldProps {
   icon: ReactNode;
-  labelName: string;
+  labelName?: string;
   name: string;
   placeholder: string;
   size: 'large' | 'middle' | 'small';

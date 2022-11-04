@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AgentsTree = React.lazy(() => import('./components/AgentsTree'));
-const List = React.lazy(() => import('./components/List'));
+const List = React.lazy(() => import('./views/agentList/AgentList'));
 const CashTransactions = React.lazy(() => import('./components/CashTransactions'));
 const PointTransactions = React.lazy(() => import('./components/PointTransactions'));
 
