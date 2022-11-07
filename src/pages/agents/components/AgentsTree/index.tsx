@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Col, Row, Typography } from 'antd';
+import { Col, Divider, Row, Typography } from 'antd';
 import styled from 'styled-components';
 import loadable from '@loadable/component';
 
 import TreeReferral from '@/pages/agents/components/AgentsTree/TreeReferral';
 import InfoDetail from '@/pages/agents/components/AgentsTree/InfoDetail';
 import { COLORS } from '@/global-styles';
+import { TYPE_MODAL } from '@/pages/agents/model';
 
 const AgentsTreeModal = loadable(() => import('./AgentsTreeModal'));
 export interface IAgentsTreeProps {}
@@ -33,9 +34,14 @@ const WrapperStyled = styled.section`
 `;
 
 const AgentsTree: React.FC<IAgentsTreeProps> = ({}) => {
-  const [visible, setVisible] = useState(false);
+  const [typeModal, setTypeModal] = useState<TYPE_MODAL>(TYPE_MODAL.NONE);
+  const visible = typeModal !== TYPE_MODAL.NONE;
 
-  const toggleModal = () => setVisible((prev) => !prev);
+  const openModal = (type: TYPE_MODAL) => {
+    if (type !== TYPE_MODAL.NONE) setTypeModal(type);
+  };
+
+  const closeModal = () => setTypeModal(TYPE_MODAL.NONE);
 
   return (
     <>
@@ -53,12 +59,13 @@ const AgentsTree: React.FC<IAgentsTreeProps> = ({}) => {
           <Col span={12}>
             <div className={'agent-tree__tree-box'}>
               <div className="agent-tree__sub-title">에이전트 상세정보</div>
-              <InfoDetail toggleModal={toggleModal} />
+              <InfoDetail openModal={openModal} />
             </div>
           </Col>
         </Row>
+        <Divider />
       </WrapperStyled>
-      {visible && <AgentsTreeModal visible={visible} toggleModal={toggleModal} type={''} />}
+      {visible && <AgentsTreeModal visible={visible} closeModal={closeModal} type={typeModal} />}
     </>
   );
 };
