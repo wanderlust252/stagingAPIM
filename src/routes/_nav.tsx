@@ -1,4 +1,4 @@
-import { AppstoreOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, ShoppingCartOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 export default {
   items: [

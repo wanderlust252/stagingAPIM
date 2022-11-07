@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { Button, Row, Input, Col, Space, Select, Cascader } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 import { CheckOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import './../styles/setting.scss';
-import { ColumnsType } from 'antd/es/table';
-const { Option } = Select;
+import '@/pages/setting/styles/setting.scss';
 const Setting: React.FC = (): JSX.Element => {
   return (
     <div>
