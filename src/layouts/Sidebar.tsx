@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 import navigation from './../routes/_nav';
-import { LeftCircleOutlined, PieChartOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { NavItem } from './models/NavModel';
 import './styles/_sidebar.scss';
 
 // import { use } from 'i18next';
-import { collapseSidebar } from '@/store/common/commonSlice';
-import { useAppDispatch, useAppSelector } from '@/hooks/hookStore';
+import { useAppDispatch } from '@/hooks/hookStore';
 
 // const logo = require('assets/images/logo.png');
 
@@ -21,7 +19,7 @@ const rootSubmenuKeys: string[] = [];
 
 const Sidebar = () => {
   // const hasSidebar = useAppSelector((state: any) => state.common.hasSidebar);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const [hasSidebar, setHasSideBar] = useState(true);
 
   const [openKeys, setOpenKeys] = useState<string[]>([]);

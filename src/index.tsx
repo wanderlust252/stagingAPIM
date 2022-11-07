@@ -8,7 +8,10 @@ import { LicenseManager } from 'ag-grid-enterprise';
 import 'ag-grid-community/styles/ag-grid.css';
 
 import rootStore from '@/store/index';
-import './i18n';
+import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
+import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
+// import './i18n';
+
 import { App } from './App';
 import { APP_CONFIG } from '@/utils/env';
 

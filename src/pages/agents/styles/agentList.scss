@@ -1,0 +1,24 @@
+.agent__list-container {
+  .agent__list-container_header {
+    display: flex;
+    justify-content: space-between;
+    .agent__list-container_header-title {
+      font-size: 24px;
+      margin: 0 0 15px;
+      padding: 0;
+      border: none;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+  }
+  .agent__list-container_content {
+    padding: 15px;
+    .agent__list-container_content_table {
+        padding: 15px;
+        .agent__list-container_content-search {
+          padding-bottom: 12px;
+          border-bottom: 1px solid #ccc;
+        }
+    }
+  }
+}

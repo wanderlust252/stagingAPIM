@@ -12,10 +12,7 @@ const Login: React.FC = (): JSX.Element => {
     <div className="login__container">
       <div className="login__wraper">
         <h1>Api management</h1>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{ remember: true }}>
+        <Form name="normal_login" className="login-form" initialValues={{ remember: true }}>
           <Form.Item name="email" rules={[{ required: true, message: 'Vui lòng nhập email!' }]}>
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
