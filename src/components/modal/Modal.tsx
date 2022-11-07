@@ -14,6 +14,9 @@ export interface IModalProps {
 const StyledModal = styled(Modal)`
   &&&.ant-modal {
     top: 50px;
+    .ant-modal-content {
+      overflow: auto;
+    }
   }
 `;
 const ModalComponent: React.FC<IModalProps> = ({
@@ -35,14 +38,7 @@ const ModalComponent: React.FC<IModalProps> = ({
   };
 
   return (
-    <StyledModal
-      style={style}
-      destroyOnClose
-      zIndex={100000}
-      title={title}
-      open={isModalOpen}
-      onOk={handleOk}
-      onCancel={handleCancel}>
+    <StyledModal style={style} title={title} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       {content}
     </StyledModal>
   );

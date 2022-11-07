@@ -13,12 +13,6 @@ const { Title } = Typography;
 
 const renderModalCreateReferral = () => (
   <Space className={'full-width'} direction={'vertical'} size={10}>
-    <Form.Item name={'is_active'} label="에이전트 권한">
-      <Select style={{ zIndex: '100000' }}>
-        <Select.Option value={'1'}>Agent A</Select.Option>
-        <Select.Option value={'2'}>Agent B</Select.Option>
-      </Select>
-    </Form.Item>
     <Form.Item label={'상위 에이전트'} name={'username'}>
       <Input />
     </Form.Item>
@@ -36,6 +30,12 @@ const renderModalCreateReferral = () => (
     </Form.Item>
     <Form.Item label={'포인트요율(%)'} name={'포인트요율(%)'}>
       <InputNumber className={'full-width'} />
+    </Form.Item>
+    <Form.Item name={'is_active'} label="에이전트 권한">
+      <Select style={{ zIndex: '100000' }}>
+        <Select.Option value={'1'}>Agent A</Select.Option>
+        <Select.Option value={'2'}>Agent B</Select.Option>
+      </Select>
     </Form.Item>
   </Space>
 );
