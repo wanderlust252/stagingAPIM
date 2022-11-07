@@ -1,4 +1,4 @@
-import { AppstoreOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, ShoppingCartOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 export default {
   items: [
@@ -24,5 +24,6 @@ export default {
       // ],
     },
     { id: 7, name: ' 대시보드 ', url: '/transactions', icon: <UserOutlined /> },
+    { id: 8, name: ' 환경 ', url: '/setting', icon: <SettingOutlined /> },
   ],
 };
