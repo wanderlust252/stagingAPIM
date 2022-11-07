@@ -4,12 +4,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import rootStore from '@/store/index';
-// import './i18n';
+import { LicenseManager } from 'ag-grid-enterprise';
+import 'ag-grid-community/styles/ag-grid.css';
 
+import rootStore from '@/store/index';
+import './i18n';
 import { App } from './App';
+import { APP_CONFIG } from '@/utils/env';
 
 const queryClient = new QueryClient();
+
+LicenseManager.setLicenseKey(APP_CONFIG.aggrid_license as string);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
