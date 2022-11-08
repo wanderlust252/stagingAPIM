@@ -50,9 +50,6 @@ const Header = () => {
     <StyledHeader>
       <Space style={{ height: '100%' }} size={8}>
         <StyledBtn>
-          <SearchOutlined />
-        </StyledBtn>
-        <StyledBtn>
           <BellOutlined />
         </StyledBtn>
         <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Dashboard = React.lazy(() => import('@/pages/dashboard/views/Dashboard'));
 const Setting = React.lazy(() => import('@/pages/setting/views/index'));
 const Agents = React.lazy(() => import('@/pages/agents/views/Agents'));

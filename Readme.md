@@ -2,7 +2,7 @@ This project was created to demonstrate how to crate a reactJS application from 
 
 the complete article can be found here
 
-https://betterprogramming.pub/complete-guideline-to-creating-a-modern-react-app-with-typescript-from-scratch-cebbb5817d8
+
 
 # ENV
 Node ver: 14.17.0
