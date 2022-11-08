@@ -32,7 +32,12 @@ export const GridExample = () => {
   const defaultColDef = useMemo(() => {
     return {
       editable: false,
-      sortable: true,
+      sortable: false,
+      suppressAutoSize: false,
+      suppressRowClickSelection: false,
+      suppressColumnFilter: false,
+      suppressColumnSelectAll: false,
+      suppressColumnExpandAll: false,
     };
   }, []);
 
