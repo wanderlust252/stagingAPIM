@@ -78,8 +78,8 @@ class RequestApi {
     return new RequestApi();
   }
 
-  get = <T = TODO>(url: string): Promise<ResponseApi<T>> => {
-    return axios.get(url);
+  get = <T = TODO>(url: string, params?: object): Promise<ResponseApi<T>> => {
+    return axios.get(url, { params });
   };
 
   post = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
