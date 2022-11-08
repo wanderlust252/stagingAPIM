@@ -1,16 +1,8 @@
-import { APP_CONFIG } from './../../utils/env';
+import { APP_CONFIG } from '@/utils/env';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import * as CONSTANT from '../../contants';
+import * as CONSTANT from '@/constants';
 import { getStorageItem, setStorageItem } from '@/utils/storage';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type TODO = any;
-
-export interface ResponseApi<T = TODO> {
-  code: string;
-  message: string;
-  data: T;
-}
+import { ResponseApi, TODO } from '@/interfaces';
 
 class RequestApi {
   private static instance: RequestApi;
