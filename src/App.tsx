@@ -1,13 +1,12 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import loadable from '@loadable/component';
-import 'antd/dist/antd.css';
 import '@/assets/scss/_style.scss';
+import 'antd/dist/antd.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 // const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-const LoginPage = loadable(() => import('@/pages/auth/views/Login'));
-const DefaultLayout = loadable(() => import('@/layouts/DefaultLayout'));
+const LoginPage = React.lazy(() => import('@/pages/auth/views/Login'));
+const DefaultLayout = React.lazy(() => import('@/layouts/DefaultLayout'));
 // const LoginPage = Loadable({
 //   loader: () => import('pages/auth/views/Login'),
 //   loading,

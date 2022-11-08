@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 export interface CommonInitialState {
-  hasSidebar: boolean;
+  collapse: boolean;
   languageInput: 'en' | 'kr';
 }
 
 const initialState: CommonInitialState = {
-  hasSidebar: false,
+  collapse: false,
   languageInput: 'kr',
 };
 export const commonSlice = createSlice({
@@ -13,7 +13,7 @@ export const commonSlice = createSlice({
   initialState: initialState,
   reducers: {
     collapseSidebar(state) {
-      state.hasSidebar = !state.hasSidebar;
+      state.collapse = !state.collapse;
     },
     changeLanguageInput(state, action) {
       state.languageInput = action.payload;

@@ -1,86 +1,108 @@
-import { Avatar, Col, Dropdown, Menu, Row, Select, Space, Typography } from 'antd';
-// import { useAppDispatch } from 'hooks/hookStore';
-// import { changeLanguage } from 'i18next';
-// import { useTranslation } from 'react-i18next';
-// import { useSelector } from 'react-redux';
-// import { history } from 'utils/history';
-// import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-// import { changeLanguageInput, collapseSidebar } from 'store/common/commonSlice';
-// import { changeLanguageInput } from 'store/common/commonSlice';
+import {
+  BellOutlined,
+  DownOutlined,
+  MenuOutlined,
+  MessageOutlined,
+  ProfileOutlined,
+  SearchOutlined,
+  SettingOutlined,
+  UnlockOutlined,
+} from '@ant-design/icons';
+import { Avatar, Button, Dropdown, Select, Space } from 'antd';
+import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
+
+import { COLORS } from '@/global-styles';
+import { useAppDispatch } from '@/hooks/hookStore';
+import { Logout, Menu, MenuItem, StyledBtn, StyledHeader, Text } from '@/layouts/components/header-styled';
+import { collapseSidebar } from '@/store/common/commonSlice';
 import './styles/_header.scss';
 
 const { Option } = Select;
 
-const items = [
-  { label: 'Logout', key: 'item-1' }, // remember to pass the key prop
-];
+const ProfileMenu = () => {
+  return (
+    <Menu direction={'vertical'}>
+      <MenuItem>
+        <ProfileOutlined />
+        <span>My Profile</span>
+      </MenuItem>
+      <MenuItem>
+        <MessageOutlined />
+        <span>Messenger</span>
+      </MenuItem>
+      <MenuItem>
+        <SettingOutlined />
+        <span>Account Settings</span>
+      </MenuItem>
+      <Logout>
+        <UnlockOutlined />
+        <span>Logout</span>
+      </Logout>
+    </Menu>
+  );
+};
 
 const Header = () => {
-  // const { i18n } = useTranslation();
-  // const dispatch = useAppDispatch();O
-  // const navigate = useNavigate();
-  const location = useLocation();
-  // const collapsed = useSelector((state: any) => state.common.isCloseSidebar);
-
-  // const toggleLayout: void = () => {
-  //   dispatch(collapseSidebar());
-  // };
-  // useEffect(() => {
-  //   console.log('Location change', params, location);
-  // }, [location]);
-
-  // const onChangeLang = (key: string): void => {
-  //   switch (key) {
-  //     case 'vi':
-  //       i18n.changeLanguage(key);
-  //       dispatch(changeLanguageInput('vi'));
-  //       break;
-  //     case 'en':
-  //       i18n.changeLanguage(key);
-  //       dispatch(changeLanguageInput('en'));
-  //       break;
-  //   }
-  // };
+  const screen = useBreakpoint();
+  const dispatch = useAppDispatch();
 
   return (
-    <header
-      style={{ position: 'sticky', zIndex: '1000' }}
-      className="header d-flex justify-content-between align-items-center bg-color-light top-0">
-      <Row>
-        <Col span={21}>
-          <Typography.Title level={3} className="margin-0">
-            {location.pathname === '/order' ? 'Danh sách đơn hàng' : ''}
-          </Typography.Title>
-          {/* <a href="javscript:;" className="header__toggle" onClick={toggleLayout}>
-              {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </a> */}
-        </Col>
-        <Col span={3} className="text-right">
-          <Space>
-            <div>
-              <Select
-                dropdownStyle={{ padding: '0.7rem 0' }}
-                defaultValue="vi"
-                className="language__select  antd-select-custom"
-                bordered={false}
-                style={{ width: 150, zIndex: '10000000000' }}>
-                <Option value="vi">Korean</Option>
-                <Option value="en">English</Option>
-              </Select>
-            </div>
-            <Dropdown overlay={() => <Menu items={items} />} placement="bottom">
-              <Avatar
-                size="large"
-                src={'https://i.pravatar.cc/300'}
-                style={{ backgroundColor: '#87d068' }}
-                icon={<i className="icon icon-bell2" />}
-              />
-            </Dropdown>
+    <StyledHeader>
+      <Space style={{ height: '100%' }} size={8}>
+        <StyledBtn>
+          <SearchOutlined />
+        </StyledBtn>
+        <StyledBtn>
+          <BellOutlined />
+        </StyledBtn>
+        <div>
+          <Select
+            defaultValue="vi"
+            className="language__select  antd-select-custom"
+            bordered={false}
+            style={{ width: 100, zIndex: '10000000000' }}>
+            <Option value="vi">Korean</Option>
+            <Option value="en">English</Option>
+          </Select>
+        </div>
+        <Dropdown
+          trigger={['click']}
+          overlayStyle={{ backgroundColor: 'transparent' }}
+          overlay={ProfileMenu}
+          placement="bottom">
+          <Space size={20} style={{ cursor: 'pointer' }} align={'center'}>
+            <Avatar
+              shape={'square'}
+              size="large"
+              src={'https://i.pravatar.cc/300'}
+              style={{
+                backgroundColor: '#87d068',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                border: '1px solid ' + COLORS.grey_2,
+              }}
+              icon={<i className="icon icon-bell2" />}
+            />
+            {screen.md && (
+              <Space style={{ textAlign: 'left' }} size={0} direction={'vertical'}>
+                <Text color={COLORS.grey_2} fontSize={'1.5rem'}>
+                  John caterina
+                </Text>
+                <Text color={COLORS.grey_1} fontSize={'1.2rem'}>
+                  Project manager
+                </Text>
+              </Space>
+            )}
+            <DownOutlined />
           </Space>
-        </Col>
-      </Row>
-    </header>
+        </Dropdown>
+        {!screen.md && (
+          <Button onClick={() => dispatch(collapseSidebar())} style={{ fontSize: '2rem' }} type={'link'}>
+            <MenuOutlined />
+          </Button>
+        )}
+      </Space>
+    </StyledHeader>
   );
 };
 

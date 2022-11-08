@@ -1,43 +1,37 @@
-import {
-  AppstoreOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-  SettingOutlined,
-  UsergroupAddOutlined,
-} from '@ant-design/icons';
+import { AppstoreOutlined, SettingOutlined, UsergroupAddOutlined, UserOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
-export default {
-  items: [
-    { id: 1, name: '대시보드', url: '/', icon: <AppstoreOutlined /> },
-    {
-      id: 2,
-      name: '  에이전트 관리  ',
-      icon: <UsergroupAddOutlined />,
-      children: [
-        {
-          id: 8,
-          name: ' 에이전트 트리뷰 ',
-          url: '/agents',
-          icon: <ShoppingCartOutlined />,
-        },
-        {
-          id: 3,
-          name: '  에이전트 목록  ',
-          url: '/agents/list',
-        },
-        {
-          id: 4,
-          name: ' 포인트 트랜잭션 내역 ',
-          url: '/agents/point-transactions',
-        },
-        {
-          id: 5,
-          name: ' 캐쉬 트랜잭션 내역 ',
-          url: '/agents/cash-transactions',
-        },
-      ],
-    },
-    { id: 7, name: ' 대시보드 ', url: '/transactions', icon: <UserOutlined /> },
-    { id: 8, name: ' 환경 ', url: '/setting', icon: <SettingOutlined /> },
-  ],
-};
+const createLink = ({ label, url }: { label: string; url: string }) => <Link to={url}>{label}</Link>;
+
+export default [
+  { key: 1, label: createLink({ url: '/dashboard', label: ' 대시보드 ' }), icon: <AppstoreOutlined /> },
+  {
+    key: 2,
+    label: ' 에이전트 관리 ',
+    icon: <UsergroupAddOutlined />,
+    children: [
+      {
+        key: 3,
+        label: createLink({ url: '/agents', label: ' 에이전트 트리뷰 ' }),
+      },
+      {
+        key: 4,
+        label: createLink({ url: '/agents/list', label: ' 에이전트 목록 ' }),
+      },
+      {
+        key: 5,
+        label: createLink({ url: '/agents/cash-transactions', label: ' 포인트 트랜잭션 내역 ' }),
+      },
+      {
+        id: 6,
+        label: createLink({ url: '/agents/point-transactions', label: ' 캐쉬 트랜잭션 내역 ' }),
+      },
+    ],
+  },
+  {
+    key: 7,
+    label: createLink({ url: '/transactions', label: '대시보드 ' }),
+    icon: <UserOutlined />,
+  },
+  { key: 8, label: createLink({ url: '/setting', label: '환경 ' }), icon: <SettingOutlined /> },
+];
