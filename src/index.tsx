@@ -7,8 +7,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { LicenseManager } from 'ag-grid-enterprise';
 import 'ag-grid-community/styles/ag-grid.css';
 
-import rootStore from '@/store/index';
-import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
+import rootStore from '@/store/index'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 // import './i18n';
 
