@@ -6,13 +6,13 @@ import {
   BalanceChangePram,
   ChangePasswordPram,
   ListTreeResponse,
-  ResponseApi,
+  IResponseApi,
   ToDoResponse,
   UserInfoResponse,
 } from '@/interfaces';
 
-const useListTree = () => {
-  return useQuery<ListTreeResponse[], ResponseApi>({
+export const useListTree = () => {
+  return useQuery<ListTreeResponse[], IResponseApi>({
     queryKey: ['ListTreeData'],
     queryFn: async () => {
       const url = '/list-tree';
@@ -27,8 +27,8 @@ const useListTree = () => {
   });
 };
 
-const useUserInfo = () => {
-  return useMutation<UserInfoResponse, ResponseApi, string | number, number>(async (id) => {
+export const useUserInfo = () => {
+  return useMutation<UserInfoResponse, IResponseApi, string | number, number>(async (id) => {
     const url = `/user-info/${id}`;
 
     try {
@@ -41,9 +41,9 @@ const useUserInfo = () => {
   });
 };
 
-const useChangePassword = () => {
+export const useChangePasswordUser = () => {
   const url = '/change-password';
-  return useMutation<ToDoResponse, ResponseApi, ChangePasswordPram, number>(async (values) => {
+  return useMutation<ToDoResponse, IResponseApi, ChangePasswordPram, number>(async (values) => {
     try {
       const { data } = await requestApi.put<ToDoResponse>(url, values);
       return data;
@@ -54,9 +54,9 @@ const useChangePassword = () => {
   });
 };
 
-const useAgentCreate = () => {
+export const useAgentCreate = () => {
   const url = '/agent-create';
-  return useMutation<ToDoResponse, ResponseApi, AgentCreatePram, number>(async (values) => {
+  return useMutation<ToDoResponse, IResponseApi, AgentCreatePram, number>(async (values) => {
     try {
       const { data } = await requestApi.post<ToDoResponse>(url, values);
       return data;
@@ -67,9 +67,9 @@ const useAgentCreate = () => {
   });
 };
 
-const useBalanceChange = () => {
+export const useBalanceChange = () => {
   const url = '/balance-change';
-  return useMutation<ToDoResponse, ResponseApi, BalanceChangePram, number>(async (values) => {
+  return useMutation<ToDoResponse, IResponseApi, BalanceChangePram, number>(async (values) => {
     try {
       const { data } = await requestApi.put<ToDoResponse>(url, values);
       return data;
@@ -79,5 +79,3 @@ const useBalanceChange = () => {
     }
   });
 };
-
-export { useListTree, useUserInfo, useChangePassword, useAgentCreate, useBalanceChange };

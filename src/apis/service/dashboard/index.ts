@@ -2,11 +2,11 @@ import { QUERY_KEYS } from '@/pages/dashboard/constants';
 import { useQuery } from '@tanstack/react-query';
 
 import requestApi from '@/apis/config';
-import { ResponseApi } from '@/interfaces';
+import { IResponseApi } from '@/interfaces';
 import { IDashboardItem } from '@/interfaces/dashboard';
 
 const useDashboardQuery = (url: string) => {
-  return useQuery<IDashboardItem[], ResponseApi>([QUERY_KEYS.DASHBOARD], async () => {
+  return useQuery<IDashboardItem[], IResponseApi>([QUERY_KEYS.DASHBOARD], async () => {
     const { data } = await requestApi.get(url);
     return data;
   });

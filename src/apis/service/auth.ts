@@ -4,11 +4,11 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 import { removeStorageItem, setStorageItem } from '@/utils/storage';
 import * as CONSTANT from '@/constants';
-import { Account, LoginResponse, LogoutResponse, ResponseApi } from '@/interfaces';
+import { Account, LoginResponse, LogoutResponse, IResponseApi } from '@/interfaces';
 
 const useLogin = () => {
   const url = '/login';
-  return useMutation<LoginResponse, ResponseApi, Account, number>(async (value) => {
+  return useMutation<LoginResponse, IResponseApi, Account, number>(async (value) => {
     try {
       const { data } = await requestApi.post<LoginResponse>(url, value);
       setStorageItem(CONSTANT.ACCESS_TOKEN, data.token);
@@ -23,7 +23,7 @@ const useLogin = () => {
 
 const useLogout = () => {
   const url = '/logout';
-  return useMutation<LogoutResponse, ResponseApi, object, number>(async () => {
+  return useMutation<LogoutResponse, IResponseApi, object, number>(async () => {
     try {
       const { data } = await requestApi.post<LogoutResponse>(url);
       removeStorageItem(CONSTANT.ACCESS_TOKEN);
