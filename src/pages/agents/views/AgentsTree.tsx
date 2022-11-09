@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Col, Divider, Row, Typography } from 'antd';
 import styled from 'styled-components';
 import loadable from '@loadable/component';
@@ -8,8 +8,7 @@ import InfoDetail from '@/pages/agents/components/AgentsTree/InfoDetail';
 import { COLORS } from '@/global-styles';
 import { TYPE_MODAL } from '@/pages/agents/model';
 
-const AgentsTreeModal = loadable(() => import('./AgentsTreeModal'));
-export interface IAgentsTreeProps {}
+const AgentsTreeModal = loadable(() => import('@/pages/agents/components/AgentsTree/AgentsTreeModal'));
 
 const { Title } = Typography;
 
@@ -33,9 +32,9 @@ const WrapperStyled = styled.section`
   }
 `;
 
-const AgentsTree: React.FC<IAgentsTreeProps> = ({}) => {
+const AgentsTree = ({}) => {
   const [typeModal, setTypeModal] = useState<TYPE_MODAL>(TYPE_MODAL.NONE);
-  const visible = typeModal !== TYPE_MODAL.NONE;
+  const visible = useMemo(() => typeModal !== TYPE_MODAL.NONE, [typeModal]);
 
   const openModal = (type: TYPE_MODAL) => {
     if (type !== TYPE_MODAL.NONE) setTypeModal(type);
@@ -49,14 +48,14 @@ const AgentsTree: React.FC<IAgentsTreeProps> = ({}) => {
         <Title className={'agent-tree__title'} level={5}>
           에이전트 트리뷰
         </Title>
-        <Row gutter={[20, 0]}>
-          <Col span={12}>
+        <Row gutter={[20, 10]}>
+          <Col xs={24} lg={12}>
             <div className={'agent-tree__tree-box'}>
               <div className="agent-tree__sub-title">에이전트 트리뷰</div>
               <TreeReferral />
             </div>
           </Col>
-          <Col span={12}>
+          <Col xs={24} lg={12}>
             <div className={'agent-tree__tree-box'}>
               <div className="agent-tree__sub-title">에이전트 상세정보</div>
               <InfoDetail openModal={openModal} />

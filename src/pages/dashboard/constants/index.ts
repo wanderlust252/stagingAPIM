@@ -1,3 +1,7 @@
+export enum QUERY_KEYS {
+  DASHBOARD = 'dashboard',
+}
+
 export const backgroundImg = [
   'linear-gradient(180deg, #ff9634, #e76f00)',
   'linear-gradient(180deg,#ffe133,#e6c300)',

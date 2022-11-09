@@ -16,5 +16,66 @@
       "bronze": "청동",
       "gun": "총"
     }
+  },
+
+  "common": {
+    "create": "Thêm mới",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "close": "Đóng",
+    "yes": "Đồng ý",
+    "cancel": "Hủy",
+    "overview": "Tổng quan",
+
+    "modal": {
+      "confirm": "하부를 생성 하시겠습니까?",
+      "error": "에러가 발생했습니다 .. 다시 시도 해주세요",
+      "success": "성공을 창조하다"
+    }
+  },
+  "agents": {
+    "referralForm": {
+      "title": "하부생성",
+      "agent_parent": "상위 에이전트",
+      "username": "닉네임",
+      "user": "닉네임",
+      "password": "비밀번호",
+      "password_confirm": "비밀번호 재입력",
+      "percent_point": "포인트요율(%)",
+      "agent_privileges": "에이전트 권한"
+    },
+    "paymentForm": {
+      "title": "에이전트 포인트 지급&차감",
+      "amount_request": "에이전트 포인트 지급&차감",
+      "note": "비고",
+      "policy": {
+        "policy_1": "마이너스(-)로 입력시 보유 금액을 차감합니다.",
+        "policy_2": "나의 보유 금액보다 큰 금액을 지급할 수 없습니다.",
+        "policy_3": "대상의 보유 금액보다 큰 금액을 차감할 수 없습니다."
+      },
+      "suggest": {
+        "10m": "1천만 ",
+        "50m": "5천만 ",
+        "1m": "1억 ",
+        "300m": "3억 ",
+        "500m": "5억 ",
+        "10b": "10억 ",
+        "init": "초기화 "
+      }
+    },
+    "ChangePwForm": {
+      "title": "비밀번호 변경",
+      "new_pw": "비밀번호 변경",
+      "confirm_pw": "비밀번호 변경"
+    },
+    "changeUsernameForm": {
+      "title": "포인트요율 변경",
+      "new_username": "새 닉네임 (2 ~ 15자리)"
+    },
+    "changePointForm": {
+      "title": "닉네임 변경",
+      "percent_point": "포인트요율"
+    }
   }
 }

@@ -1,20 +1,13 @@
-import {
-  BellOutlined,
-  DownOutlined,
-  MenuOutlined,
-  MessageOutlined,
-  ProfileOutlined,
-  SettingOutlined,
-  UnlockOutlined,
-} from '@ant-design/icons';
+import { BellOutlined, DownOutlined, MenuOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
 import { Avatar, Button, Dropdown, Select, Space } from 'antd';
 import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
+import { useTranslation } from 'react-i18next';
 
+import { LANGUAGE } from '@/common/enum';
 import { COLORS } from '@/global-styles';
 import { useAppDispatch } from '@/hooks/hookStore';
 import { Logout, Menu, MenuItem, StyledBtn, StyledHeader, Text } from '@/layouts/components/header-styled';
-import { collapseSidebar } from '@/store/common/commonSlice';
-import { useTranslation } from 'react-i18next';
+import { changeLanguageInput, collapseSidebar } from '@/store/common/commonSlice';
 import './styles/_header.scss';
 
 const { Option } = Select;
@@ -22,14 +15,6 @@ const { Option } = Select;
 const ProfileMenu = () => {
   return (
     <Menu direction={'vertical'}>
-      <MenuItem>
-        <ProfileOutlined />
-        <span>My Profile</span>
-      </MenuItem>
-      <MenuItem>
-        <MessageOutlined />
-        <span>Messenger</span>
-      </MenuItem>
       <MenuItem>
         <SettingOutlined />
         <span>Account Settings</span>
@@ -49,6 +34,7 @@ const Header = () => {
   const handleChangeLanguage = (e: string) => {
     window.localStorage.setItem('i18n', e);
     i18n.changeLanguage(e);
+    dispatch(changeLanguageInput(e));
   };
   return (
     <StyledHeader>
@@ -58,13 +44,13 @@ const Header = () => {
         </StyledBtn>
         <div>
           <Select
-            defaultValue="Korea"
+            defaultValue="kr"
             className="language__select  antd-select-custom"
             bordered={false}
             onChange={(e: string) => handleChangeLanguage(e)}
             style={{ width: 100, zIndex: '10000000000' }}>
-            <Option value="kr">Korean</Option>
-            <Option value="en">English</Option>
+            <Option value={LANGUAGE.KR}>Korean</Option>
+            <Option value={LANGUAGE.EN}>English</Option>
           </Select>
         </div>
         <Dropdown
@@ -95,6 +81,7 @@ const Header = () => {
                 </Text>
               </Space>
             )}
+
             <DownOutlined />
           </Space>
         </Dropdown>

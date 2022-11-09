@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { LANGUAGE } from '@/common/enum';
+
 export interface CommonInitialState {
   collapse: boolean;
-  languageInput: 'en' | 'kr';
+  languageInput: LANGUAGE;
 }
 
 const initialState: CommonInitialState = {
   collapse: false,
-  languageInput: 'kr',
+  languageInput: LANGUAGE.KR,
 };
 export const commonSlice = createSlice({
   name: 'common',

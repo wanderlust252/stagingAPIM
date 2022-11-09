@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography, Row, Col, Divider } from 'antd';
+import { Col, Divider, Row, Typography } from 'antd';
 import styled from 'styled-components';
 
 import CardItem from '../components/CardItem';
+import { useDashboardQuery } from '@/apis/service/dashboard';
 
 const { Title } = Typography;
 
@@ -17,7 +18,7 @@ interface ICard {
   icon: string;
 }
 
-const data: ICard[] = [
+const List: ICard[] = [
   {
     title: '나의 보유 포인트',
     statistics: '0 POINT',
@@ -69,18 +70,21 @@ const data: ICard[] = [
 ];
 
 export default function Dashboard() {
+  const { data } = useDashboardQuery('https://jsonplaceholder.typicode.com/todos');
+
   return (
     <WrapperStyled>
       <Title className="title" level={3}>
         대시보드
       </Title>
       <Row gutter={[20, 20]}>
-        {data.map((item, idx) => (
+        {List.map((item, idx) => (
           <Col xs={24} sm={12} lg={6} key={idx}>
             <CardItem {...item} />
           </Col>
         ))}
       </Row>
+
       <Divider />
     </WrapperStyled>
   );

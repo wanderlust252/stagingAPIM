@@ -53,8 +53,6 @@ const WrapperStyled = styled.div`
       border-radius: unset;
       transition: none;
       flex: 1;
-      background-color: ${COLORS.violet};
-      border: 1px solid ${COLORS.violet};
 
       &--left {
         border-bottom-left-radius: 4px;
@@ -64,11 +62,6 @@ const WrapperStyled = styled.div`
       &--right {
         border-bottom-right-radius: 4px;
         border-top-right-radius: 4px;
-      }
-
-      &:hover {
-        background-color: #7550bf;
-        border-color: #7550bf;
       }
     }
   }
