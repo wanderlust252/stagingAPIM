@@ -2,21 +2,23 @@ import i18n from 'i18next';
 
 import { initReactI18next } from 'react-i18next';
 import translationEn from './locales/en/translation.json';
-import translationVi from './locales/vi/translation.json';
+import translationKr from './locales/kr/translation.json';
+
+const language = window.localStorage.getItem('i18n') || 'kr';
 
 const resources = {
   en: {
     translation: translationEn,
   },
-  vi: {
-    translation: translationVi,
+  kr: {
+    translation: translationKr,
   },
 };
 
 i18n.use(initReactI18next).init({
   debug: process.env.NODE_ENV === 'development',
-  fallbackLng: 'vi',
-  lng: 'vi',
+  fallbackLng: language || 'kr',
+  lng: language || 'kr',
   load: 'all',
   ns: ['translation'],
   defaultNS: 'translation',

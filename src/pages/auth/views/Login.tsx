@@ -1,59 +1,50 @@
-import React, { useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-// import { Form, Checkbox, Input, Button , notification, Image } from 'antd';
-
+import { Button, Form } from 'antd';
+import InputField from '../../../components/FormField/InputField';
 import '../styles/login.scss';
 
 const Login: React.FC = (): JSX.Element => {
-  const [loading] = useState(false);
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+  };
 
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
   return (
     <div className="login__container">
       <div className="login__wraper">
         <h1>Api management</h1>
-        <Form name="normal_login" className="login-form" initialValues={{ remember: true }}>
-          <Form.Item name="email" rules={[{ required: true, message: 'Vui lòng nhập email!' }]}>
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Nhập email"
-              className="user"
+        <Form
+          name="normal_login"
+          className="login-form"
+          initialValues={{ remember: true }}
+          autoComplete="off"
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}>
+          <Form.Item name="username" rules={[{ required: true, message: 'Please input your Username!' }]}>
+            <InputField
+              icon={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Username"
+              size="large"
+              name="username"
+              labelName="Username"
             />
           </Form.Item>
-          <Form.Item name="password" rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}>
-            <Input
-              type="password"
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              className="password"
-              placeholder="Nhập mật khẩu"
+          <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
+            <InputField
+              icon={<LockOutlined className="site-form-item-icon" />}
+              placeholder="Password"
+              size="large"
+              name="password"
+              labelName="Password"
             />
           </Form.Item>
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button primary-bg font-size-16 text-uppercase"
-              loading={loading}>
-              <span className="font-size-16">Đăng nhập</span>
+            <Button type="primary" htmlType="submit" className="login-form-button full-w-btn">
+              Log in
             </Button>
-          </Form.Item>
-          <Form.Item>
-            <div className="display-flex-center justify-content-between">
-              <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
-              {/* <a
-                href="javascript:;"
-                className="primary-color-txt font-size-16"
-                onClick={showModal}
-              >
-                Đăng ký tài khoản
-              </a> */}
-
-              <a href="login" className="login-form-forgot primary-color-txt font-size-16">
-                Quên mật khẩu
-              </a>
-            </div>
           </Form.Item>
         </Form>
       </div>

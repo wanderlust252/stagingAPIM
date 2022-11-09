@@ -9,7 +9,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 
 import rootStore from '@/store/index'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-// import './i18n';
+import './i18n';
 
 import { App } from './App';
 import { APP_CONFIG } from '@/utils/env';

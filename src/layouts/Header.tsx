@@ -4,7 +4,6 @@ import {
   MenuOutlined,
   MessageOutlined,
   ProfileOutlined,
-  SearchOutlined,
   SettingOutlined,
   UnlockOutlined,
 } from '@ant-design/icons';
@@ -15,6 +14,7 @@ import { COLORS } from '@/global-styles';
 import { useAppDispatch } from '@/hooks/hookStore';
 import { Logout, Menu, MenuItem, StyledBtn, StyledHeader, Text } from '@/layouts/components/header-styled';
 import { collapseSidebar } from '@/store/common/commonSlice';
+import { useTranslation } from 'react-i18next';
 import './styles/_header.scss';
 
 const { Option } = Select;
@@ -45,7 +45,11 @@ const ProfileMenu = () => {
 const Header = () => {
   const screen = useBreakpoint();
   const dispatch = useAppDispatch();
-
+  const { i18n } = useTranslation();
+  const handleChangeLanguage = (e: string) => {
+    window.localStorage.setItem('i18n', e);
+    i18n.changeLanguage(e);
+  };
   return (
     <StyledHeader>
       <Space style={{ height: '100%' }} size={8}>
@@ -54,11 +58,12 @@ const Header = () => {
         </StyledBtn>
         <div>
           <Select
-            defaultValue="vi"
+            defaultValue="Korea"
             className="language__select  antd-select-custom"
             bordered={false}
+            onChange={(e: string) => handleChangeLanguage(e)}
             style={{ width: 100, zIndex: '10000000000' }}>
-            <Option value="vi">Korean</Option>
+            <Option value="kr">Korean</Option>
             <Option value="en">English</Option>
           </Select>
         </div>
