@@ -1,8 +1,7 @@
 import React from 'react';
 import { Space, Form, Input, InputNumber, Button } from 'antd';
 import styled from 'styled-components';
-
-export interface IPaymentFormProps {}
+import { useTranslation } from 'react-i18next';
 
 const WrapperStyled = styled(Space)`
   .list {
@@ -28,8 +27,9 @@ const WrapperStyled = styled(Space)`
   }
 `;
 
-const PaymentForm: React.FC<IPaymentFormProps> = ({}) => {
+const PaymentForm = ({}) => {
   const form = Form.useFormInstance();
+  const { t } = useTranslation();
 
   const suggest = (value: number, reset = false) => {
     if (reset) {
@@ -42,44 +42,48 @@ const PaymentForm: React.FC<IPaymentFormProps> = ({}) => {
 
   return (
     <WrapperStyled direction={'vertical'}>
-      <Form.Item initialValue={0} label={'요청 금액'} name={'number'}>
+      <Form.Item
+        rules={[{ required: true }]}
+        initialValue={0}
+        label={t('agents.paymentForm.amount_request') as string}
+        name={'number'}>
         <InputNumber
-          className={'full-width'}
+          style={{ width: '100%' }}
           controls={false}
           formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         />
       </Form.Item>
-      <Form.Item label={'비고'} name={'note'}>
+      <Form.Item rules={[{ required: true }]} label={t('agents.paymentForm.note') as string} name={'note'}>
         <Input />
       </Form.Item>
 
       <ul className="list">
-        <li>마이너스(-)로 입력시 보유 금액을 차감합니다.</li>
-        <li>나의 보유 금액보다 큰 금액을 지급할 수 없습니다.</li>
-        <li>대상의 보유 금액보다 큰 금액을 차감할 수 없습니다.</li>
+        <li>{t('agents.paymentForm.policy.policy_1') as string}</li>
+        <li>{t('agents.paymentForm.policy.policy_2') as string}</li>
+        <li>{t('agents.paymentForm.policy.policy_3') as string}</li>
       </ul>
 
       <Space className={'btn-group'} size={0}>
         <Button className={'btn round-left '} onClick={() => suggest(10000000)}>
-          1천만
+          {t('agents.paymentForm.suggest.10m') as string}
         </Button>
         <Button className={'btn'} onClick={() => suggest(50000000)}>
-          5천만
+          {t('agents.paymentForm.suggest.50m') as string}
         </Button>
         <Button className={'btn'} onClick={() => suggest(100000000)}>
-          1억
+          {t('agents.paymentForm.suggest.1m') as string}
         </Button>
         <Button className={'btn'} onClick={() => suggest(300000000)}>
-          3억
+          {t('agents.paymentForm.suggest.300m') as string}
         </Button>
         <Button className={'btn'} onClick={() => suggest(500000000)}>
-          5억
+          {t('agents.paymentForm.suggest.500m') as string}
         </Button>
         <Button className={'btn'} onClick={() => suggest(1000000000)}>
-          10억
+          {t('agents.paymentForm.suggest.10b') as string}
         </Button>
         <Button className={'btn round-right'} onClick={() => suggest(0, true)}>
-          초기화
+          {t('agents.paymentForm.suggest.init') as string}
         </Button>
       </Space>
     </WrapperStyled>

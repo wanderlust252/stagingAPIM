@@ -16,5 +16,65 @@
       "bronze": "Bronze",
       "gun": "Gun"
     }
+  },
+  "common": {
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "close": "Close",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "overview": "Overview",
+    "modal": {
+      "confirm": "Do you want to continue ?",
+      "error": "An error occurred, please try again",
+      "success": "create successfully"
+    }
+  },
+  "agents": {
+    "referralForm": {
+      "title": "Agent Tree",
+      "agent_parent": "Agent Parent",
+      "username": "User name",
+      "user": "User",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "percent_point": "Percent Point",
+      "agent_privileges": "Agent privileges"
+    },
+    "paymentForm": {
+      "title": "Payment and point",
+      "amount_request": "Amount requested",
+      "note": "note",
+      "policy": {
+        "policy_1": "If you enter a minus (-), the holding amount is deducted.",
+        "policy_2": "I cannot pay more than my holdings.",
+        "policy_3": "You cannot deduct an amount greater than the target's holdings."
+      },
+      "suggest": {
+        "10m": "10m",
+        "50m": "50m",
+        "1m": "1m",
+        "300m": "300m",
+        "500m": "500m",
+        "10b": "10b",
+        "init": "reset"
+      }
+    },
+
+    "ChangePwForm": {
+      "title": "Change Password",
+      "new_pw": "New password",
+      "confirm_pw": "Re-enter new password"
+    },
+    "changeUsernameForm": {
+      "title": "Change Username",
+      "new_username": "New username (2 ~ 15 characters)"
+    },
+    "changePointForm": {
+      "title": "Change Point",
+      "percent_point": "Percent point"
+    }
   }
 }

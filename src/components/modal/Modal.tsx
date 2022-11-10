@@ -28,7 +28,6 @@ const ModalComponent: React.FC<IModalProps> = ({
   style,
 }: IModalProps) => {
   const handleOk = () => {
-    setIsModalOpen(false);
     // handle action
     if (callback) callback();
   };

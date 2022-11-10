@@ -1,10 +1,11 @@
-import '@/assets/scss/_style.scss';
-import 'antd/dist/antd.css';
 import React from 'react';
+import loadable from '@loadable/component';
 import { Route, Routes } from 'react-router-dom';
+import 'antd/dist/antd.css';
+import '@/assets/scss/_style.scss';
 
-const LoginPage = React.lazy(() => import('@/pages/auth/views/Login'));
-const DefaultLayout = React.lazy(() => import('@/layouts/DefaultLayout'));
+const LoginPage = loadable(() => import('@/pages/auth/views/Login'));
+const DefaultLayout = loadable(() => import('@/layouts/DefaultLayout'));
 
 export const App: React.FC = () => {
   // const { t } = useTranslation();
