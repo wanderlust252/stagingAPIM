@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, Tooltip } from 'antd';
-import { SettingOutlined, UserOutlined, FormOutlined } from '@ant-design/icons';
+import { SettingOutlined, UserOutlined, FormOutlined, PayCircleOutlined } from '@ant-design/icons';
 
 import { COLORS } from '@/global-styles';
 import { TYPE_MODAL } from '@/pages/agents/model';
+import { useTranslation } from 'react-i18next';
 
 export interface IInfoDetailProps {
   openModal: (type: TYPE_MODAL) => void;
@@ -68,32 +69,34 @@ const WrapperStyled = styled.div`
 `;
 
 const InfoDetail: React.FC<IInfoDetailProps> = ({ openModal }) => {
+  const { t } = useTranslation();
+
   return (
     <WrapperStyled>
       <table>
         <tbody>
           <tr>
-            <td>닉네임 (아이디)</td>
+            <td>{`${t('agents.agents_detail.nick_name')}`}</td>
             <td>
-              깡본사 (kkang)
-              <Tooltip placement={'right'} title={'닉네임 변경'}>
+              kkang
+              <Tooltip placement={'right'} title={`${t('agents.changeUsernameForm.title')}`}>
                 <ButtonStyled onClick={() => openModal(TYPE_MODAL.CHANGE_USERNAME)}>
                   <FormOutlined />
                 </ButtonStyled>
               </Tooltip>
             </td>
-            <td>에이전트 등급</td>
+            <td>{`${t('agents.agents_detail.agent_rating')}`}</td>
             <td>
-              <SpanStyled bgColor={COLORS.yellow}>Master Agent</SpanStyled>{' '}
+              <SpanStyled bgColor={COLORS.green}>Master Agent</SpanStyled>
             </td>
           </tr>
           <tr>
-            <td>보유포인트</td>
+            <td>{`${t('agents.agents_detail.holding_points')}`}</td>
             <td className={'text-right'}>0 POINT</td>
-            <td>포인트요율</td>
+            <td>{`${t('agents.agents_detail.point_rate')}`}</td>
             <td className={'text-right'}>
               7%
-              <Tooltip placement={'right'} title={'포인트요율 변경'}>
+              <Tooltip placement={'right'} title={`${t('agents.changePointForm.title')}`}>
                 <ButtonStyled onClick={() => openModal(TYPE_MODAL.CHANGE_POINTS)}>
                   <FormOutlined />
                 </ButtonStyled>
@@ -101,23 +104,23 @@ const InfoDetail: React.FC<IInfoDetailProps> = ({ openModal }) => {
             </td>
           </tr>
           <tr>
-            <td>보유캐쉬</td>
+            <td>{`${t('agents.agents_detail.holding_cash')}`}</td>
             <td className={'text-right'}>0 KRW</td>
-            <td>잔액(POINT) 이하 알림</td>
+            <td>{`${t('agents.agents_detail.notify_balance')}`}</td>
             <td className={'text-right'}>6</td>
           </tr>
           <tr>
-            <td>계좌정보</td>
+            <td>{`${t('agents.agents_detail.account_info')}`}</td>
             <td>worri kkang 343534</td>
-            <td>연락처</td>
+            <td>{`${t('agents.agents_detail.contact')}`}</td>
             <td>kkang@email.com</td>
           </tr>
           <tr>
-            <td>등록일</td>
+            <td>{`${t('agents.agents_detail.register_date')}`}</td>
             <td>2022-08-11 19:08:23</td>
-            <td>상태 </td>
+            <td>{`${t('agents.agents_detail.situation')}`} </td>
             <td>
-              <SpanStyled bgColor={COLORS.orange}> 미승인</SpanStyled>
+              <SpanStyled bgColor={COLORS.orange}>{`${t('agents.agents_detail.not_approved')}`}</SpanStyled>
             </td>
           </tr>
           <tr>
@@ -135,15 +138,15 @@ const InfoDetail: React.FC<IInfoDetailProps> = ({ openModal }) => {
           type="primary"
           className={'btn btn--left'}
           onClick={() => openModal(TYPE_MODAL.CREATE_REF)}>
-          하부생성
-        </Button>{' '}
+          {`${t('agents.agents_detail.sub_creation')}`}
+        </Button>
         <Button
           size={'large'}
-          icon={<UserOutlined />}
+          icon={<PayCircleOutlined />}
           type="primary"
           className={'btn'}
           onClick={() => openModal(TYPE_MODAL.PAYMENT)}>
-          포인트 지급&차감
+          {`${t('agents.agents_detail.point_payment')}`}
         </Button>
         <Button
           size={'large'}
@@ -151,7 +154,7 @@ const InfoDetail: React.FC<IInfoDetailProps> = ({ openModal }) => {
           type="primary"
           className={'btn btn--right'}
           onClick={() => openModal(TYPE_MODAL.CHANGE_PW)}>
-          비밀번호 변경
+          {`${t('agents.agents_detail.chang_pw')}`}
         </Button>
       </div>
     </WrapperStyled>

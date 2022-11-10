@@ -1,9 +1,10 @@
+import React from 'react';
 import { BellOutlined, DownOutlined, MenuOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
 import { Avatar, Button, Dropdown, Select, Space } from 'antd';
 import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
-import { useTranslation } from 'react-i18next';
 
 import { LANGUAGE } from '@/common/enum';
+import { useTranslation } from 'react-i18next';
 import { COLORS } from '@/global-styles';
 import { useAppDispatch } from '@/hooks/hookStore';
 import { Logout, Menu, MenuItem, StyledBtn, StyledHeader, Text } from '@/layouts/components/header-styled';
@@ -12,16 +13,17 @@ import './styles/_header.scss';
 
 const { Option } = Select;
 
-const ProfileMenu = () => {
+const ProfileMenu: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Menu direction={'vertical'}>
       <MenuItem>
         <SettingOutlined />
-        <span>Account Settings</span>
+        <span>{`${t('header.account_setting')}`}</span>
       </MenuItem>
       <Logout>
         <UnlockOutlined />
-        <span>Logout</span>
+        <span>{`${t('header.logout')}`}</span>
       </Logout>
     </Menu>
   );
@@ -56,7 +58,7 @@ const Header = () => {
         <Dropdown
           trigger={['click']}
           overlayStyle={{ backgroundColor: 'transparent' }}
-          overlay={ProfileMenu}
+          overlay={() => <ProfileMenu />}
           placement="bottom">
           <Space size={20} style={{ cursor: 'pointer' }} align={'center'}>
             <Avatar
@@ -77,7 +79,7 @@ const Header = () => {
                   John caterina
                 </Text>
                 <Text color={COLORS.grey_1} fontSize={'1.2rem'}>
-                  Project manager
+                  Admin
                 </Text>
               </Space>
             )}

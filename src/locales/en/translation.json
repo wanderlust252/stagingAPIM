@@ -32,7 +32,32 @@
       "success": "create successfully"
     }
   },
+  "role": {},
   "agents": {
+    "agents_tree": {
+      "title": "Agents Tree View",
+      "sub_title": {
+        "1": "Agents Tree View",
+        "2": "Agents Detail Information"
+      },
+      "enter_agent_name": "Please enter agent name"
+    },
+    "agents_detail": {
+      "nick_name": "Nickname (ID)",
+      "holding_points": "Holding points",
+      "holding_cash": "Holding cash",
+      "account_info": "Account Information",
+      "register_date": "Registration date ",
+      "agent_rating": "Agent Rating",
+      "point_rate": "Point Rate",
+      "notify_balance": "Notification below balance (POINT)",
+      "contact": "Contact",
+      "situation": "Situation",
+      "not_approved": "not approved",
+      "sub_creation": " Create sub",
+      "chang_pw": "Change Password",
+      "point_payment": "Payment point"
+    },
     "referralForm": {
       "title": "Agent Tree",
       "agent_parent": "Agent Parent",
@@ -76,5 +101,21 @@
       "title": "Change Point",
       "percent_point": "Percent point"
     }
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "agent": {
+      "title": "Agents",
+      "tree": "Agents tree view",
+      "list": "Agents list",
+      "point": "Point transactions",
+      "cash": "Cash transactions"
+    },
+    "transactions": "Transactions",
+    "setting": "Setting"
+  },
+  "header": {
+    "account_setting": "Account setting",
+    "logout": "logout"
   }
 }

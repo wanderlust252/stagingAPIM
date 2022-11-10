@@ -35,6 +35,30 @@
     }
   },
   "agents": {
+    "agents_tree": {
+      "title": "에이전트 트리뷰",
+      "sub_title": {
+        "1": "에이전트 트리뷰",
+        "2": "에이전트 상세정보"
+      },
+      "enter_agent_name": "에이전트명을 입력해주세요"
+    },
+    "agents_detail": {
+      "nick_name": "닉네임 (아이디)",
+      "holding_points": "보유포인트",
+      "holding_cash": "보유캐쉬",
+      "account_info": "계좌정보",
+      "register_date": "등록일",
+      "agent_rating": "에이전트 등급",
+      "point_rate": "포인트요율",
+      "notify_balance": "잔액(POINT) 이하 알림",
+      "contact": "연락처",
+      "situation": "상태",
+      "not_approved": "미승인",
+      "sub_creation": " 하부생성 ",
+      "chang_pw": " 포인트 지급&차감 ",
+      "point_payment": "포인트 지급&차감 "
+    },
     "referralForm": {
       "title": "하부생성",
       "agent_parent": "상위 에이전트",
@@ -77,5 +101,21 @@
       "title": "닉네임 변경",
       "percent_point": "포인트요율"
     }
+  },
+  "sidebar": {
+    "dashboard": "대시보드",
+    "agent": {
+      "title": "에이전트 관리",
+      "tree": "에이전트 트리뷰",
+      "list": "에이전트 목록",
+      "point": "포인트 트랜잭션 내역",
+      "cash": "캐쉬 트랜잭션 내역"
+    },
+    "transactions": "대시보드",
+    "setting": "환경"
+  },
+  "header": {
+    "account_setting": "설정 및 정보",
+    "logout": "로그아웃"
   }
 }
