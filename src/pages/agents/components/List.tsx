@@ -1,8 +1,6 @@
 import React from 'react';
 
-export interface IAgentsListProps {}
-
-const List: React.FC<IAgentsListProps> = ({}) => {
+const List = ({}) => {
   return <div>AgentsList work</div>;
 };
 export default List;

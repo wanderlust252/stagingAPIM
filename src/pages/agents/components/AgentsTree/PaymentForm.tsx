@@ -1,7 +1,6 @@
-import React from 'react';
-import { Space, Form, Input, InputNumber, Button } from 'antd';
-import styled from 'styled-components';
+import { Button, Form, Input, InputNumber, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
 const WrapperStyled = styled(Space)`
   .list {

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Input, Tree } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import { DataNode, TreeProps } from 'antd/es/tree';
-import styled from 'styled-components';
 import { COLORS } from '@/global-styles';
+import { DownOutlined } from '@ant-design/icons';
+import { Input, Tree } from 'antd';
+import { DataNode } from 'antd/es/tree';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
 const SpanStyled = styled.span<{ bgColor: string }>`
   display: block;
@@ -22,7 +22,7 @@ const renderTitle = ({ role, bgColor, name }: { role: string; bgColor: string; n
 
 const treeData: DataNode[] = [
   {
-    title: renderTitle({ role: 'MA', bgColor: COLORS.orange, name: '깡본사(kkang)' }),
+    title: renderTitle({ role: 'MA', bgColor: COLORS.orange, name: 'kka(kkang)' }),
     key: '0-0',
     children: [
       {
@@ -57,14 +57,13 @@ const WrapperStyled = styled.div`
 `;
 
 const TreeReferral = () => {
-  const onSelect: TreeProps['onSelect'] = (selectedKeys, info) => {
-    console.log('selected', selectedKeys, info);
-  };
+  const { t } = useTranslation();
+
   return (
     <WrapperStyled>
-      <Input size={'middle'} placeholder={'에이전트명을 입력해주세요'} />
+      <Input size={'middle'} placeholder={`${t('agents.agents_tree.enter_agent_name')}`} />
       <div className={'content'}>
-        <Tree switcherIcon={<DownOutlined />} defaultExpandedKeys={['0-0-0']} onSelect={onSelect} treeData={treeData} />
+        <Tree switcherIcon={<DownOutlined />} defaultExpandedKeys={['0-0-0']} treeData={treeData} />
       </div>
     </WrapperStyled>
   );

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Col, Divider, Row, Typography } from 'antd';
 import styled from 'styled-components';
 
-import CardItem from '../components/CardItem';
 import { useDashboardQuery } from '@/apis/service/dashboard';
+import CardItem from '../components/CardItem';
 
 const { Title } = Typography;
 

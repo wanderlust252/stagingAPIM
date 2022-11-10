@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/hookStore';
 import { collapseSidebar } from '@/store/common/commonSlice';
 import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
 
-import navigation from './../routes/_nav';
+import useNavigation from '@/routes/_nav';
 import { DrawerStyled, MenuFixedStyled, SiderFixedStyled, SiderToggleStyled } from './components/sidebar-styled';
 import './styles/_sidebar.scss';
 
@@ -12,6 +12,7 @@ const Sidebar = () => {
   const screens = useBreakpoint();
   const collapse = useAppSelector((state) => state.common.collapse);
   const dispatch = useAppDispatch();
+  const nav = useNavigation();
 
   const toggleSidebar = () => {
     dispatch(collapseSidebar());
@@ -23,7 +24,7 @@ const Sidebar = () => {
         <div className="display-flex justify-content-center logo">
           <img src={logo} alt="logo" />
         </div>
-        <MenuFixedStyled theme={'dark'} items={navigation} className="sidebar-full-height" mode="inline" />
+        <MenuFixedStyled theme={'dark'} items={nav} className="sidebar-full-height" mode="inline" />
       </SiderFixedStyled>
     );
 
@@ -31,7 +32,7 @@ const Sidebar = () => {
     <DrawerStyled
       onClose={toggleSidebar}
       zIndex={10000}
-      width={250}
+      width={280}
       maskStyle={{ backgroundColor: 'transparent' }}
       open={collapse}
       placement={'left'}>
@@ -39,7 +40,7 @@ const Sidebar = () => {
         <div style={{ height: '15vh' }} className="display-flex justify-content-center logo">
           <img src={logo} alt="logo" />
         </div>
-        <MenuFixedStyled theme={'dark'} items={navigation} className="sidebar-full-height" mode="inline" />
+        <MenuFixedStyled theme={'dark'} items={nav} className="sidebar-full-height" mode="inline" />
       </SiderToggleStyled>
     </DrawerStyled>
   );
