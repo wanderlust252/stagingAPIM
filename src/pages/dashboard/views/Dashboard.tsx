@@ -2,6 +2,7 @@ import { Col, Divider, Row, Typography } from 'antd';
 import styled from 'styled-components';
 
 import { useDashboardQuery } from '@/apis/service/dashboard';
+import { useTranslation } from 'react-i18next';
 import CardItem from '../components/CardItem';
 
 const { Title } = Typography;
@@ -17,64 +18,64 @@ interface ICard {
   icon: string;
 }
 
-const List: ICard[] = [
-  {
-    title: '나의 보유 포인트',
-    statistics: '0 POINT',
-    subTitle: ' 나의 보유 포인트',
-    icon: 'MoneyCollectOutlined',
-  },
-  {
-    title: '나의 보유 캐쉬',
-    statistics: '0 KRW',
-    subTitle: '나의 보유 캐쉬',
-    icon: 'VerticalRightOutlined',
-  },
-  {
-    title: '나의 유저 수',
-    statistics: '0 명',
-    subTitle: '나의 유저 수',
-    icon: 'UserOutlined ',
-  },
-  {
-    title: '벤더 수 / 게임 수',
-    statistics: '49 / 4,568',
-    subTitle: '벤더 수 / 게임 수',
-    icon: 'InfoCircleOutlined ',
-  },
-  {
-    title: '하부(전체) 보유 포인트',
-    statistics: '0 POINT',
-    subTitle: '하부(전체) 보유 포인트',
-    icon: 'MoneyCollectOutlined',
-  },
-  {
-    title: '하부(전체) 보유 캐쉬',
-    statistics: '0 KRW',
-    subTitle: '하부(전체) 보유 캐쉬',
-    icon: 'VerticalRightOutlined',
-  },
-  {
-    title: '하부(전체) 유저 수',
-    statistics: '0 명',
-    subTitle: '하부(전체) 유저 수',
-    icon: 'UsergroupDeleteOutlined',
-  },
-  {
-    title: '하부(전체) 에이전트 수',
-    statistics: '24 명',
-    subTitle: '하부(전체) 에이전트 수',
-    icon: 'UsergroupDeleteOutlined',
-  },
-];
-
 export default function Dashboard() {
   const { data } = useDashboardQuery('https://jsonplaceholder.typicode.com/todos');
+  const { t } = useTranslation();
+  const List: ICard[] = [
+    {
+      title: `${t('dashboard.holding_points')}`,
+      statistics: '0 POINT',
+      subTitle: `${t('dashboard.holding_points')}`,
+      icon: 'MoneyCollectOutlined',
+    },
+    {
+      title: `${t('dashboard.cache_points')}`,
+      statistics: '0 KRW',
+      subTitle: `${t('dashboard.cache_points')}`,
+      icon: 'VerticalRightOutlined',
+    },
+    {
+      title: `${t('dashboard.number_users')}`,
+      statistics: `0 ${t('common.number')}`,
+      subTitle: `${t('dashboard.number_users')}`,
+      icon: 'UserOutlined ',
+    },
+    {
+      title: `${t('dashboard.number_vendors_games')}`,
+      statistics: '49 / 4,568',
+      subTitle: `${t('dashboard.number_vendors_games')}`,
+      icon: 'InfoCircleOutlined ',
+    },
+    {
+      title: `${t('dashboard.retained_points')}`,
+      statistics: '0 POINT',
+      subTitle: `${t('dashboard.retained_points')}`,
+      icon: 'MoneyCollectOutlined',
+    },
+    {
+      title: `${t('dashboard.retained_cache')}`,
+      statistics: '0 KRW',
+      subTitle: `${t('dashboard.retained_cache')}`,
+      icon: 'VerticalRightOutlined',
+    },
+    {
+      title: `${t('dashboard.number_lower_users')}`,
+      statistics: `0 ${t('common.number')}`,
+      subTitle: `${t('dashboard.number_lower_users')}`,
+      icon: 'UsergroupDeleteOutlined',
+    },
+    {
+      title: `${t('dashboard.number_lower_agents')}`,
+      statistics: `24 ${t('common.number')}`,
+      subTitle: `${t('dashboard.number_lower_agents')}`,
+      icon: 'UsergroupDeleteOutlined',
+    },
+  ];
 
   return (
     <WrapperStyled>
       <Title className="title" level={3}>
-        대시보드
+        {`${t('dashboard.title')}`}
       </Title>
       <Row gutter={[20, 20]}>
         {List.map((item, idx) => (

@@ -1,4 +1,15 @@
 {
+  "dashboard": {
+    "title": "Dashboard",
+    "holding_points": "My holding points",
+    "cache_points": "My cache points",
+    "number_users": "My number of uses",
+    "number_vendors_games": "Number of vendors / number of games",
+    "retained_points": "Lower points retained",
+    "retained_cache": "Bottom (All) Retained Cache",
+    "number_lower_users": "Number of lower (total) users",
+    "number_lower_agents": "Number of lower (total) agents"
+  },
   "agent-management": {
     "table": {
       "agent-list": "Agent List",
@@ -26,6 +37,7 @@
     "yes": "Yes",
     "cancel": "Cancel",
     "overview": "Overview",
+    "number": "agents",
     "modal": {
       "confirm": "Do you want to continue ?",
       "error": "An error occurred, please try again",

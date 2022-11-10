@@ -1,4 +1,15 @@
 {
+  "dashboard": {
+    "title": "대시보드",
+    "holding_points": "나의 보유 포인트",
+    "cache_points": "나의 보유 캐쉬",
+    "number_users": "나의 유저 수",
+    "number_vendors_games": "벤더 수 / 게임 수",
+    "retained_points": "하부(전체) 보유 포인트",
+    "retained_cache": "하부(전체) 보유 캐쉬",
+    "number_lower_users": "하부(전체) 유저 수",
+    "number_lower_agents": "하부(전체) 에이전트 수"
+  },
   "agent-management": {
     "table": {
       "agent-list": "에이전트 목록",
@@ -27,6 +38,7 @@
     "yes": "Đồng ý",
     "cancel": "Hủy",
     "overview": "Tổng quan",
+    "number": "명",
 
     "modal": {
       "confirm": "하부를 생성 하시겠습니까?",
