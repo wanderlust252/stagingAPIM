@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export * from './treeview';
+export * from './tree-view';
 export * from './auth';
+export * from './setting';
 
 export type TODO = any;
 
-export interface ResponseApi<T = TODO> {
+export interface IResponseApi<T = TODO> {
   code: string;
   message: string;
   data: T;
