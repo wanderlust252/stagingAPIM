@@ -45,7 +45,7 @@ class RequestApi {
             const refreshToken = getStorageItem(CONSTANT.REFRESH_TOKEN);
             const phoneCode = getStorageItem('phoneCode');
             const token = getStorageItem(CONSTANT.ACCESS_TOKEN);
-            const url = `${process.env.REACT_APP_BASE_URL_ACCOUNT}Token/RefreshAdmin`;
+            const path = `${process.env.REACT_APP_BASE_URL_ACCOUNT}Token/RefreshAdmin`;
             const data = {
               refreshTokenStr: refreshToken,
               oldTokenStr: token,
@@ -54,7 +54,7 @@ class RequestApi {
               },
             };
             try {
-              const res = await axios.post(url, data);
+              const res = await axios.post(path, data);
               setStorageItem(CONSTANT.ACCESS_TOKEN, res.data.data.token);
               setStorageItem(CONSTANT.REFRESH_TOKEN, res.data.data.refreshToken);
               axios.defaults.headers.common.Authorization = `Bearer ${res.data.data.token}`;

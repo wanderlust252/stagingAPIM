@@ -3,6 +3,7 @@ import { ThemeProvider } from '@mui/material';
 import { themeCreator } from './base';
 import { StylesProvider } from '@mui/styles';
 import useLocalStorageState from 'use-local-storage-state';
+import { TODO } from '@/interfaces';
 export const ThemeContext = React.createContext((themeName: string): void => {});
 
 const ThemeProviderWrapper: React.FC = (props) => {
@@ -12,7 +13,7 @@ const ThemeProviderWrapper: React.FC = (props) => {
   const [themeName, _setThemeName] = useState(curThemeName);
   const theme = themeCreator(themeName);
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  const setThemeName = (themeName: any): void => {
+  const setThemeName = (themeName: TODO): void => {
     setCurThemeName(themeName);
     _setThemeName(themeName);
   };

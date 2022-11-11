@@ -1,11 +1,6 @@
 import { FC } from 'react';
-import { styled } from '@mui/material/styles';
+import { HorizontalLine } from './style';
 
-const HorizontalLine = styled('div')({
-  marginTop: '.9375rem',
-  marginBottom: '.9375rem',
-  borderBottomStyle: 'ridge',
-});
 const HorizontalLineComponent: FC = () => {
   return (
     <>
