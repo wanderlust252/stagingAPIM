@@ -6,8 +6,9 @@ import SidebarLayout from '@/layouts/SidebarLayout';
 import BaseLayout from '@/layouts/BaseLayout';
 
 import SuspenseLoader from '@/components/SuspenseLoader';
+import { TODO } from '@/interfaces';
 
-const Loader = (Component: any) => (props: any) =>
+const Loader = (Component: TODO) => (props: TODO) =>
   (
     <Suspense fallback={<SuspenseLoader />}>
       <Component {...props} />

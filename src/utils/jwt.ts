@@ -1,5 +1,6 @@
 import { getCookie, delCookie, saveCookie } from './helpers';
 import { APP_CONFIG } from './env';
+import { TODO } from '@/interfaces';
 
 export const getAccessToken = () => {
   return getCookie(APP_CONFIG.tokenKey) || null;
@@ -9,7 +10,7 @@ export const getAuth = () => {
   return JSON.parse(getCookie(APP_CONFIG.profileKey) as string) || null;
 };
 
-export const saveAuth = (auth: any, exdays = 1) => {
+export const saveAuth = (auth: TODO, exdays = 1) => {
   saveCookie({ name: APP_CONFIG.profileKey as string, value: JSON.stringify(auth), exdays });
 };
 
