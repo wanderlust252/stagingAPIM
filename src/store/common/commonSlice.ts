@@ -1,5 +1,5 @@
+import { LANGUAGE } from '@/interfaces/enum';
 import { createSlice } from '@reduxjs/toolkit';
-import { LANGUAGE } from '@/common/enum';
 
 export interface CommonInitialState {
   collapse: boolean;

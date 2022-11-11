@@ -1,21 +1,22 @@
-import React from 'react';
-import loadable from '@loadable/component';
-import { Route, Routes } from 'react-router-dom';
-import 'antd/dist/antd.css';
-import '@/assets/scss/_style.scss';
+import { useRoutes } from 'react-router-dom';
+import router from 'src/router';
 
-const LoginPage = loadable(() => import('@/pages/auth/views/Login'));
-const DefaultLayout = loadable(() => import('@/layouts/DefaultLayout'));
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
-export const App: React.FC = () => {
-  // const { t } = useTranslation();
-  React.useEffect(() => {
-    window.localStorage.getItem('i18n') == undefined && window.localStorage.setItem('i18n', 'kr');
-  }, []);
+import { CssBaseline } from '@mui/material';
+import ThemeProvider from './theme/ThemeProvider';
+
+function App() {
+  const content = useRoutes(router);
+
   return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/*" element={<DefaultLayout />} />
-    </Routes>
+    <ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <CssBaseline />
+        {content}
+      </LocalizationProvider>
+    </ThemeProvider>
   );
-};
+}
+export default App;

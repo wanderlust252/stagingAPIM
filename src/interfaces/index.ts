@@ -16,3 +16,7 @@ export interface PaginationParams {
   limit: number;
   search?: string;
 }
+
+export interface ObjAny {
+  [props: string]: any;
+}

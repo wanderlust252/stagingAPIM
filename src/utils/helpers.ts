@@ -1,5 +1,4 @@
 import { APP_CONFIG } from '@/utils/env';
-import { ObjAny } from '@/common/interface';
 
 export const getCookie = (cname: string | undefined) => {
   if (!cname) {

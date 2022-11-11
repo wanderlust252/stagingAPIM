@@ -1,8 +1,8 @@
 import { APP_CONFIG } from '@/utils/env';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import * as CONSTANT from '@/constants';
+import * as CONSTANT from '@/interfaces/constants';
 import { getStorageItem, setStorageItem } from '@/utils/storage';
-import { ResponseApi, TODO } from '@/interfaces';
+import { IResponseApi, TODO } from '@/interfaces';
 
 class RequestApi {
   private static instance: RequestApi;
@@ -70,23 +70,23 @@ class RequestApi {
     return new RequestApi();
   }
 
-  get = <T = TODO>(url: string, params?: object): Promise<ResponseApi<T>> => {
+  get = <T = TODO>(url: string, params?: object): Promise<IResponseApi<T>> => {
     return axios.get(url, { params });
   };
 
-  post = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+  post = <T = TODO>(url: string, body?: object): Promise<IResponseApi<T>> => {
     return axios.post(url, body);
   };
 
-  put = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+  put = <T = TODO>(url: string, body?: object): Promise<IResponseApi<T>> => {
     return axios.put(url, body);
   };
 
-  patch = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+  patch = <T = TODO>(url: string, body?: object): Promise<IResponseApi<T>> => {
     return axios.patch(url, body);
   };
 
-  delete = <T = TODO>(url: string, body?: object): Promise<ResponseApi<T>> => {
+  delete = <T = TODO>(url: string, body?: object): Promise<IResponseApi<T>> => {
     return axios.delete(url, { data: body });
   };
 }

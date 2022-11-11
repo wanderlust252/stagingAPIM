@@ -1,4 +1,4 @@
-FROM node:14.17.0-alpine
+FROM node:16
 
 # speed up npm install a little on docker
 # RUN npm config set registry http://registry.npmjs.org/
@@ -21,5 +21,5 @@ COPY . .
 # build production app w/ webpack
 # RUN ["npm", "build"]
 # EXPOSE 80
-EXPOSE 3001
+EXPOSE 3006
 CMD ["npm", "start" ]

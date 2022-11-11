@@ -1,33 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { LicenseManager } from 'ag-grid-enterprise';
+import 'nprogress/nprogress.css';
 import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import rootStore from '@/store/index'; // Core grid CSS, always needed
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-
-import { App } from './App';
+import { APP_CONFIG } from './utils/env';
+import { LicenseManager } from 'ag-grid-enterprise';
+import rootStore from './store';
 import './i18n';
-import { APP_CONFIG } from '@/utils/env';
 
-const queryClient = new QueryClient();
+import { SidebarProvider } from './contexts/SidebarContext';
+import App from './App';
 
 LicenseManager.setLicenseKey(APP_CONFIG.aggrid_license as string);
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <Provider store={rootStore}>
-      <QueryClientProvider client={queryClient}>
+const queryClient = new QueryClient();
+
+ReactDOM.render(
+  <Provider store={rootStore}>
+    <QueryClientProvider client={queryClient}>
+      <SidebarProvider>
         <BrowserRouter>
-          <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
           <App />
+          <ReactQueryDevtools position="bottom-right" />
         </BrowserRouter>
-      </QueryClientProvider>
-    </Provider>
-  </React.StrictMode>,
+      </SidebarProvider>
+    </QueryClientProvider>
+  </Provider>,
+  document.getElementById('root'),
 );

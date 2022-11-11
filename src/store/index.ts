@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 
 import auth from '@/pages/auth/store/AuthSlice';
 import common, { commonSlice } from './common/commonSlice';
-import { RootAction } from './type';
+import { RootAction } from '@/interfaces/enum';
 
 const rootReducer = combineReducers({
   common,
