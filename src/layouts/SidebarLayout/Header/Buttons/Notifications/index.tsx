@@ -50,8 +50,7 @@ function HeaderNotifications() {
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right',
-            }}
-          >
+            }}>
             <NotificationsActiveTwoToneIcon />
           </NotificationsBadge>
         </IconButton>
@@ -67,8 +66,7 @@ function HeaderNotifications() {
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
-        }}
-      >
+        }}>
         <Box sx={{ p: 2 }} display="flex" alignItems="center" justifyContent="space-between">
           <Typography variant="h5">Notifications</Typography>
         </Box>

@@ -1,17 +1,18 @@
 import { FC, ReactNode } from 'react';
 import { Box, alpha, lighten, useTheme } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-
+import { useIsFetching, useIsMutating } from '@tanstack/react-query';
 import Sidebar from './Sidebar';
 import Header from './Header';
-
+import SuspenseLoader from '@/components/SuspenseLoader';
 interface SidebarLayoutProps {
   children?: ReactNode;
 }
 
 const SidebarLayout: FC<SidebarLayoutProps> = () => {
   const theme = useTheme();
-
+  const isFetching = useIsFetching();
+  const isMutating = useIsMutating();
   return (
     <>
       <Box
@@ -33,8 +34,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = () => {
                     0.05,
                   )}`,
           },
-        }}
-      >
+        }}>
         <Header />
         <Sidebar />
         <Box
@@ -47,13 +47,13 @@ const SidebarLayout: FC<SidebarLayoutProps> = () => {
             [theme.breakpoints.up('lg')]: {
               ml: `${theme.sidebar.width}`,
             },
-          }}
-        >
+          }}>
           <Box display="block">
             <Outlet />
           </Box>
         </Box>
       </Box>
+      {isFetching || isMutating ? <SuspenseLoader /> : null}
     </>
   );
 };
