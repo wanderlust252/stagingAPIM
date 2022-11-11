@@ -5,7 +5,7 @@ const ComponentTable: React.FC = () => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
   const gridStyle = useMemo(() => ({ height: '400px', width: '100%' }), []);
   const [rowData, setRowData] = useState();
-  const [columnDefs, setColumnDefs] = useState([
+  const [columnDefs] = useState([
     { field: 'athlete' },
     { field: 'age' },
     { field: 'country' },
@@ -23,7 +23,7 @@ const ComponentTable: React.FC = () => {
     };
   }, []);
 
-  const onGridReady = useCallback((params) => {
+  const onGridReady = useCallback(() => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
@@ -37,8 +37,7 @@ const ComponentTable: React.FC = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           onGridReady={onGridReady}
-          pagination
-        ></AgGridReact>
+          pagination></AgGridReact>
       </div>
     </div>
   );

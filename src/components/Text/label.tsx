@@ -1,13 +1,8 @@
 import { FC } from 'react';
-import { styled } from '@mui/material/styles';
+import { LabelTextProps } from '@/interfaces';
+import { LabelStyled } from './style';
 
-interface LabelPropsType {
-  message: string | undefined;
-}
-
-const LabelStyled = styled('label')({});
-
-const LabelComponent: FC<LabelPropsType> = ({ message }) => {
+const LabelComponent: FC<LabelTextProps> = ({ message }) => {
   return (
     <>
       <LabelStyled>{message}</LabelStyled>

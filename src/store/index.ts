@@ -4,13 +4,14 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query/react';
 import auth from '@/pages/auth/store/AuthSlice';
 import common, { commonSlice } from './common/commonSlice';
 import { RootAction } from '@/interfaces/enum';
+import { TODO } from '@/interfaces';
 
 const rootReducer = combineReducers({
   common,
   auth,
 });
 
-const appReducers = (state: any, action: any) => {
+const appReducers = (state: TODO, action: TODO) => {
   if (action.type === RootAction.LOGOUT) {
     return rootReducer(
       {
@@ -23,7 +24,7 @@ const appReducers = (state: any, action: any) => {
   return rootReducer(state, action);
 };
 
-const middlewareHandler = (getDefaultMiddleware: any) => {
+const middlewareHandler = (getDefaultMiddleware: TODO) => {
   return [...getDefaultMiddleware()];
 };
 //API slice Will include automatically generated redux reducer And a custom middleware

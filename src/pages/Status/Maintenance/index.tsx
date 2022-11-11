@@ -1,22 +1,10 @@
 import { Box, Typography, Container, Divider, IconButton, Tooltip } from '@mui/material';
 import Logo from 'src/components/LogoSign';
 
-import { styled } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
-
-const MainContent = styled(Box)(
-  () => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`,
-);
+import { MainContent } from './style';
 
 function StatusMaintenance() {
   return (

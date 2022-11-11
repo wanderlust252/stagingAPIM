@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 const Transactions: React.FC = () => {
-  const [isShow, setIsShow] = useState(false);
-
   return <Button>ok</Button>;
 };
 

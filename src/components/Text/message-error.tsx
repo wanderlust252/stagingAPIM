@@ -1,16 +1,8 @@
+import { LabelTextProps } from '@/interfaces';
 import { FC } from 'react';
-import { styled } from '@mui/material/styles';
+import { TextWrapper } from './style';
 
-interface TMessageErrorPropsType {
-  message: string | undefined;
-}
-
-const TextWrapper = styled('p')({
-  margin: 0,
-  color: 'red',
-});
-
-const MessageErrorComponent: FC<TMessageErrorPropsType> = ({ message }) => {
+const MessageErrorComponent: FC<LabelTextProps> = ({ message }) => {
   return (
     <>
       <TextWrapper>{message}</TextWrapper>

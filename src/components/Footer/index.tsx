@@ -1,10 +1,5 @@
-import { Box, Container, Link, Typography, styled } from '@mui/material';
-
-const FooterWrapper = styled(Container)(
-  ({ theme }) => `
-        margin-top: ${theme.spacing(4)};
-`,
-);
+import { Box, Typography } from '@mui/material';
+import { FooterWrapper } from './style';
 
 function Footer() {
   return (
@@ -14,8 +9,7 @@ function Footer() {
         display={{ xs: 'block', md: 'flex' }}
         alignItems="center"
         textAlign={{ xs: 'center', md: 'left' }}
-        justifyContent="space-between"
-      >
+        justifyContent="space-between">
         <Box>
           <Typography variant="subtitle1">&copy; 2022 - Admin</Typography>
         </Box>

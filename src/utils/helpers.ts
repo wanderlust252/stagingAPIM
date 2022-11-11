@@ -1,3 +1,4 @@
+import { TODO } from '@/interfaces';
 import { APP_CONFIG } from '@/utils/env';
 
 export const getCookie = (cname: string | undefined) => {
@@ -44,7 +45,7 @@ export const delCookie = (name: string) => {
 /**
  * Check Empty data
  **/
-export const isEmpty = (value: any): boolean => {
+export const isEmpty = (value: TODO): boolean => {
   return (
     value === undefined ||
     value === null ||
@@ -68,7 +69,7 @@ export const formatNumber = (value: string | number) => {
   return `${prefix}${result}${list[1] ? `.${list[1]}` : ''}`;
 };
 
-export const validationPhone = (value: string, callback: any) => {
+export const validationPhone = (value: string, callback: TODO) => {
   if (/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(value)) {
     return callback();
   }
@@ -144,7 +145,7 @@ export const getBase64 = (file: File) => {
   });
 };
 
-export const handleFilterSelectOptions = (inputValue: string, option: any) => {
+export const handleFilterSelectOptions = (inputValue: string, option: TODO) => {
   return (
     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
     option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0

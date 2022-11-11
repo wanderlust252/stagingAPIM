@@ -4,57 +4,19 @@ import {
   Typography,
   Container,
   Divider,
-  OutlinedInput,
   IconButton,
   Tooltip,
   FormControl,
   InputAdornment,
-  Button,
   FormHelperText,
 } from '@mui/material';
 import Logo from 'src/components/LogoSign';
-
-import { styled } from '@mui/material/styles';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
-
-const MainContent = styled(Box)(
-  () => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`,
-);
-
-const TypographyH1 = styled(Typography)(
-  ({ theme }) => `
-  font-size: ${theme.typography.pxToRem(75)};
-`,
-);
-
-const TypographyH3 = styled(Typography)(
-  ({ theme }) => `
-  color: ${theme.colors.alpha.black[50]};
-`,
-);
-
-const OutlinedInputWrapper = styled(OutlinedInput)(
-  ({ theme }) => `
-    background-color: ${theme.colors.alpha.white[100]};
-`,
-);
-
-const ButtonNotify = styled(Button)(
-  ({ theme }) => `
-    margin-right: -${theme.spacing(1)};
-`,
-);
+import { MainContent, TypographyH1, TypographyH3, OutlinedInputWrapper, ButtonNotify } from './style';
+import { TODO } from '@/interfaces';
 
 function StatusComingSoon() {
   const calculateTimeLeft = () => {
@@ -73,7 +35,7 @@ function StatusComingSoon() {
     return timeLeft;
   };
 
-  const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TODO>(calculateTimeLeft());
 
   useEffect(() => {
     setTimeout(() => {
@@ -81,7 +43,7 @@ function StatusComingSoon() {
     }, 1000);
   });
 
-  const timerComponents: any = [];
+  const timerComponents: TODO = [];
 
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval]) {

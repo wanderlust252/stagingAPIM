@@ -2,38 +2,7 @@ import { useState } from 'react';
 import { Box, Typography, Hidden, Container, Button, Grid } from '@mui/material';
 import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone';
 import LoadingButton from '@mui/lab/LoadingButton';
-
-import { styled } from '@mui/material/styles';
-
-const GridWrapper = styled(Grid)(
-  ({ theme }) => `
-    background: ${theme.colors.gradients.black1};
-`,
-);
-
-const MainContent = styled(Box)(
-  () => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`,
-);
-
-const TypographyPrimary = styled(Typography)(
-  ({ theme }) => `
-      color: ${theme.colors.alpha.white[100]};
-`,
-);
-
-const TypographySecondary = styled(Typography)(
-  ({ theme }) => `
-      color: ${theme.colors.alpha.white[70]};
-`,
-);
+import { GridWrapper, MainContent, TypographyPrimary, TypographySecondary } from './style';
 
 function Status500() {
   const [pending, setPending] = useState(false);
@@ -60,8 +29,7 @@ function Status500() {
                   loading={pending}
                   variant="outlined"
                   color="primary"
-                  startIcon={<RefreshTwoToneIcon />}
-                >
+                  startIcon={<RefreshTwoToneIcon />}>
                   Refresh view
                 </LoadingButton>
                 <Button href="/overview" variant="contained" sx={{ ml: 1 }}>
