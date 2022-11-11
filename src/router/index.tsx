@@ -2,10 +2,10 @@ import { Suspense, lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import { RouteObject } from 'react-router';
 
-import SidebarLayout from 'src/layouts/SidebarLayout';
-import BaseLayout from 'src/layouts/BaseLayout';
+import SidebarLayout from '@/layouts/SidebarLayout';
+import BaseLayout from '@/layouts/BaseLayout';
 
-import SuspenseLoader from 'src/components/SuspenseLoader';
+import SuspenseLoader from '@/components/SuspenseLoader';
 
 const Loader = (Component: any) => (props: any) =>
   (
@@ -17,14 +17,14 @@ const Loader = (Component: any) => (props: any) =>
 // Api
 
 // transactions
-const Transactions = Loader(lazy(() => import('src/pages/Transactions')));
+const Transactions = Loader(lazy(() => import('@/pages/Transactions')));
 
 // Status
 
-const Status404 = Loader(lazy(() => import('src/pages/Status/Status404')));
-const Status500 = Loader(lazy(() => import('src/pages/Status/Status500')));
-const StatusComingSoon = Loader(lazy(() => import('src/pages/Status/ComingSoon')));
-const StatusMaintenance = Loader(lazy(() => import('src/pages/Status/Maintenance')));
+const Status404 = Loader(lazy(() => import('@/pages/Status/Status404')));
+const Status500 = Loader(lazy(() => import('@/pages/Status/Status500')));
+const StatusComingSoon = Loader(lazy(() => import('@/pages/Status/ComingSoon')));
+const StatusMaintenance = Loader(lazy(() => import('@/pages/Status/Maintenance')));
 
 const routes: RouteObject[] = [
   {
