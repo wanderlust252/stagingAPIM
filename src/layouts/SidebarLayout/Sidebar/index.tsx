@@ -6,6 +6,7 @@ import { Box, Drawer, alpha, styled, Divider, useTheme, lighten, darken } from '
 import SidebarMenu from './SidebarMenu';
 import Logo from 'src/components/LogoSign';
 import Scrollbar from 'src/components/Scrollbar';
+import { TODO } from '@/interfaces';
 
 const SidebarWrapper = styled(Box)(
   ({ theme }) => `
@@ -22,7 +23,7 @@ const SidebarWrapper = styled(Box)(
 function Sidebar() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
-  const theme: any = useTheme();
+  const theme: TODO = useTheme();
 
   return (
     <>
@@ -40,16 +41,14 @@ function Sidebar() {
               ? alpha(lighten(theme.header.background, 0.1), 0.5)
               : darken(theme.colors.alpha.black[100], 0.5),
           boxShadow: theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none',
-        }}
-      >
+        }}>
         <Scrollbar>
           <Box mt={3}>
             <Box
               mx={2}
               sx={{
                 width: 52,
-              }}
-            >
+              }}>
               <Logo />
             </Box>
           </Box>
@@ -76,24 +75,21 @@ function Sidebar() {
         open={sidebarToggle}
         onClose={closeSidebar}
         variant="temporary"
-        elevation={9}
-      >
+        elevation={9}>
         <SidebarWrapper
           sx={{
             background:
               theme.palette.mode === 'dark'
                 ? theme.colors.alpha.white[100]
                 : darken(theme.colors.alpha.black[100], 0.5),
-          }}
-        >
+          }}>
           <Scrollbar>
             <Box mt={3}>
               <Box
                 mx={2}
                 sx={{
                   width: 52,
-                }}
-              >
+                }}>
                 <Logo />
               </Box>
             </Box>

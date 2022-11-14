@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
-import { Box, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
+import { Loading } from './style';
 
 function SuspenseLoader() {
   useEffect(() => {
@@ -12,7 +13,7 @@ function SuspenseLoader() {
   }, []);
 
   return (
-    <Box
+    <Loading
       sx={{
         position: 'fixed',
         left: 0,
@@ -22,10 +23,9 @@ function SuspenseLoader() {
       }}
       display="flex"
       alignItems="center"
-      justifyContent="center"
-    >
+      justifyContent="center">
       <CircularProgress size={64} disableShrink thickness={3} />
-    </Box>
+    </Loading>
   );
 }
 
