@@ -5,7 +5,6 @@ import { StylesProvider } from '@mui/styles';
 import useLocalStorageState from 'use-local-storage-state';
 import { TODO } from '@/interfaces';
 export const ThemeContext = React.createContext((themeName: string): void => {});
-
 const ThemeProviderWrapper: React.FC = (props) => {
   const [curThemeName, setCurThemeName] = useLocalStorageState('appTheme', {
     defaultValue: 'PureLightTheme',

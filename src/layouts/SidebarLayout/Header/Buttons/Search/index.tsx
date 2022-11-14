@@ -21,26 +21,20 @@ import {
 } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import { forwardRef, ReactElement, Ref, useState } from 'react';
-
 import ChevronRightTwoToneIcon from '@mui/icons-material/ChevronRightTwoTone';
-import {
-  DialogWrapper,
-  DialogTitleWrapper,
-  SearchInputWrapper,
-} from '@/layouts/SidebarLayout/Header/Buttons/Search/styles';
-
+import { DialogWrapper, DialogTitleWrapper, SearchInputWrapper } from './styles';
+import { TODO } from '@/interfaces';
 const Transition = forwardRef(function Transition(
-  props: TransitionProps & { children: ReactElement<any, any> },
+  props: TransitionProps & { children: ReactElement<TODO, TODO> },
   ref: Ref<unknown>,
 ) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
-
 function HeaderSearch() {
   const [openSearchResults, setOpenSearchResults] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSearchChange = (event: any): void => {
+  const handleSearchChange = (event: TODO): void => {
     setSearchValue(event.target.value);
 
     if (event.target.value) {
