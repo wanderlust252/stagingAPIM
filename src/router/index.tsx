@@ -21,8 +21,6 @@ const Dashboard = Loader(lazy(() => import('@/pages/dashboard/views/Dashboard'))
 // agents tree view
 const AgentsTreeView = Loader(lazy(() => import('@/pages/agents/views/AgentsTreeView')));
 
-// transactions
-
 // Status
 
 const Status404 = Loader(lazy(() => import('@/pages/Status/Status404')));
@@ -64,15 +62,15 @@ const routes: RouteObject[] = [
             path: 'coming-soon',
             element: <StatusComingSoon />,
           },
-          {
-            path: '/login',
-            element: <Login />,
-          },
         ],
       },
       {
         path: '*',
         element: <Status404 />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ],
   },
