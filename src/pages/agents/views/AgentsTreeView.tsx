@@ -1,26 +1,20 @@
-import React from 'react';
-import { Col, Container, Form, Row, Stack } from 'react-bootstrap';
-
-import styled from 'styled-components';
+import { Col, Container, Form, Row } from 'react-bootstrap';
+import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { TreeItem, TreeView } from '@mui/lab';
-import { ChevronRight, ExpandMore } from '@mui/icons-material';
-import { Typography, styled as styleMUI, colors } from '@mui/material';
+import styled from 'styled-components';
+import { styled as styleMUI, Typography, Stack } from '@mui/material';
+import { TreeView } from '@mui/lab';
 
-const SpanStyled = styled.span<{ bgColor: string }>`
-  display: inline-block;
-  color: white;
-  padding: 0.1rem 0.5rem;
-  background-color: ${(props) => props.bgColor};
-  margin-right: 0.3rem;
-`;
-
-const renderTitle = ({ role, bgColor, name }: { role: string; bgColor: string; name: string }) => (
-  <div className="d-flex">
-    <SpanStyled bgColor={bgColor}>{role}</SpanStyled>
-    {name}
-  </div>
-);
+import AgentTreeModal from '@/pages/agents/components/AgentTreeView/AgentTreeModal';
+import { showConfirm, showError } from '@/utils/alert';
+import ChangePasswordForm from '../components/AgentTreeView/ChangePasswordForm';
+import { ChangePoint, ChangeUsername } from '../components/AgentTreeView/ChangeUsernameAndPointForm';
+import TreeReferral from '../components/AgentTreeView/TreeReferral';
+import TreeReferralForm from '../components/AgentTreeView/TreeReferralForm';
+import { TYPE_MODAL } from '../model';
+import AgentDetail from '../components/AgentTreeView/AgentDetail';
+import PaymentForm from '../components/AgentTreeView/PaymentForm';
 
 const Wrapper = styled.div`
   background-color: white;
@@ -54,44 +48,89 @@ const Title = styleMUI(Typography)(
 
 const AgentsTreeView = () => {
   const { t } = useTranslation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [typeModal, setTypeModal] = useState(TYPE_MODAL.NONE);
+  const show = useMemo(() => typeModal !== TYPE_MODAL.NONE, [typeModal]);
+
+  const titleModal: { [props: string]: string } = useMemo(
+    () => ({
+      [TYPE_MODAL.PAYMENT]: t('agents.paymentForm.title'),
+      [TYPE_MODAL.CHANGE_PW]: t('agents.ChangePwForm.title'),
+      [TYPE_MODAL.CREATE_REF]: t('agents.referralForm.title'),
+      [TYPE_MODAL.CHANGE_USERNAME]: t('agents.changeUsernameForm.title'),
+      [TYPE_MODAL.CHANGE_POINT]: t('agents.changePointForm.title'),
+    }),
+    [t],
+  );
+
+  const openModal = (type: TYPE_MODAL) => {
+    if (type !== TYPE_MODAL.NONE) setTypeModal(type);
+  };
+
+  const closeModal = () => setTypeModal(TYPE_MODAL.NONE);
+
+  const onSubmit = async (value: any) => {
+    console.log(errors);
+
+    const confirm = await showConfirm();
+    if (!confirm) {
+      showError('error');
+      return;
+    }
+    if (!(Object.keys(errors).length === 0)) {
+      const errorMessages = Object.keys(errors).map((item) => {
+        return errors[item]?.message;
+      });
+    }
+  };
+
+  const getModalByType = () => {
+    switch (typeModal) {
+      case TYPE_MODAL.CHANGE_POINT:
+        return <ChangePoint register={register} />;
+      case TYPE_MODAL.CHANGE_PW:
+        return <ChangePasswordForm register={register} />;
+      case TYPE_MODAL.CHANGE_USERNAME:
+        return <ChangeUsername register={register} />;
+      case TYPE_MODAL.CREATE_REF:
+        return <TreeReferralForm register={register} />;
+      case TYPE_MODAL.PAYMENT:
+        return <PaymentForm register={register} />;
+      default:
+        return '';
+    }
+  };
 
   return (
-    <Container fluid className={'p-5'}>
+    <Stack direction={'column'} spacing={0.2}>
+      <Typography variant={'h3'}> {t('agents.agents_tree.title')}</Typography>
       <Row className={'g-4'}>
-        <Col xs={12} md={6}>
-          <Title variant={'h5'}>에이전트 트리뷰</Title>
+        <Col xs={12} md={5}>
+          <Title variant={'h5'}>{`${t('agents.agents_tree.sub_title.1')}`}</Title>
           <Wrapper>
-            <Stack className={'p-3'} direction={'vertical'} gap={3}>
-              <Form.Control placeholder={`${t('agents.agents_tree.enter_agent_name')}`} type="text" />
-              <TreeViewStyled
-                defaultCollapseIcon={<ExpandMore />}
-                defaultExpandIcon={<ChevronRight />}
-                sx={{ height: 500, flexGrow: 1, maxWidth: '100%', overflowY: 'auto' }}>
-                <TreeItem nodeId="1" label={renderTitle({ role: 'MA', bgColor: colors.blue[500], name: 'kkang' })}>
-                  <TreeItem
-                    nodeId="2"
-                    label={renderTitle({ role: 'A', bgColor: colors.yellow[500], name: 'kkang2' })}
-                  />
-                </TreeItem>
-                <TreeItem nodeId="5" label={renderTitle({ role: 'MA', bgColor: colors.blue[500], name: 'kkang' })}>
-                  <TreeItem nodeId="10" label={renderTitle({ role: 'A', bgColor: colors.yellow[500], name: 'kkang2' })}>
-                    <TreeItem nodeId="6" label={renderTitle({ role: 'B', bgColor: colors.green[500], name: 'kkang2' })}>
-                      <TreeItem
-                        nodeId="8"
-                        label={renderTitle({ role: 'C', bgColor: colors.red[500], name: 'kkang' })}
-                      />
-                    </TreeItem>
-                  </TreeItem>
-                </TreeItem>
-              </TreeViewStyled>
-            </Stack>
+            <TreeReferral />
           </Wrapper>
         </Col>
-        <Col xs={12} md={6}>
-          <Wrapper></Wrapper>
+        <Col xs={12} md={7}>
+          <Wrapper>
+            <Title variant={'h5'}>{`${t('agents.agents_tree.sub_title.2')}`}</Title>
+            <AgentDetail openModal={openModal} />
+          </Wrapper>
         </Col>
       </Row>
-    </Container>
+
+      {show && (
+        <AgentTreeModal title={titleModal[typeModal]} show={show} closeModal={closeModal}>
+          <Form id="hook-form" onSubmit={handleSubmit(onSubmit)}>
+            {getModalByType()}
+          </Form>
+        </AgentTreeModal>
+      )}
+    </Stack>
   );
 };
 

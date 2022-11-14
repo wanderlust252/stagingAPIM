@@ -1,12 +1,27 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
 
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
-import { alpha, Box, Divider, IconButton, lighten, Stack, styled, Tooltip, useTheme } from '@mui/material';
+import {
+  alpha,
+  Box,
+  IconButton,
+  lighten,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  styled,
+  Tooltip,
+  useTheme,
+} from '@mui/material';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
+import { useTranslation } from 'react-i18next';
+import { LANGUAGE } from '@/interfaces/enum';
+import { useAppDispatch } from '@/hooks/hooks';
+import { changeLanguageInput } from '@/store/common/commonSlice';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }: any) => `
@@ -38,9 +53,46 @@ const HeaderText = styled('div')({
   fontWeight: 500,
 });
 
+const ChangeLanguage = styled(Select)`
+  &&& {
+    .MuiOutlinedInput-notchedOutline {
+      border: none;
+    }
+    .MuiSelect-select {
+      //padding: 0;
+
+      border-color: transparent;
+
+      .MuiSelect-nativeInput {
+        border: none;
+      }
+    }
+  }
+  //&&&.form-select {
+  //  width: 13%;
+  //  border: none;
+  //  padding: 0.5rem;
+  //  font-size: 0.875rem;
+  //  font-weight: 700;
+  //  color: #6e759f;
+  //  .item {
+  //    font-size: 0.875rem;
+  //    color: #6e759f;
+  //  }
+  //  &:focus {
+  //    box-shadow: none;
+  //  }
+  //}
+`;
+
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
+  const dispatch = useAppDispatch();
+
+  const onChangeInput = (e: SelectChangeEvent<unknown>) => {
+    dispatch(changeLanguageInput(e.target.value));
+  };
 
   return (
     <HeaderWrapper
@@ -58,12 +110,13 @@ function Header() {
                 0.1,
               )}`,
       }}>
-      <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} alignItems="center" spacing={2}>
-        {/* <HeaderMenu /> */}
-        <HeaderText>Title Demo</HeaderText>
-      </Stack>
-      <Box display="flex" alignItems="center">
+      <Box marginLeft={'auto'} sx={{ width: '50%' }} display="flex" alignItems="center" justifyContent="flex-end">
         <HeaderButtons />
+        <ChangeLanguage onChange={onChangeInput} defaultValue={LANGUAGE.KR}>
+          <MenuItem value={LANGUAGE.KR}>Korean</MenuItem>
+          <MenuItem value={LANGUAGE.EN}>English</MenuItem>
+        </ChangeLanguage>
+
         <HeaderUserbox />
         <Box
           component="span"

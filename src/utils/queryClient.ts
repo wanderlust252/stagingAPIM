@@ -7,14 +7,15 @@ export const queryClient = new QueryClient({
     mutations: {
       onError: (err) => {
         const error = err as IResponseApi;
-        notifyError(error.message);
+        notifyError(error.message ?? 'error occur !!');
       },
     },
     queries: {
       onError: (err) => {
         const error = err as IResponseApi;
-        notifyError(error.message);
+        notifyError(error.message ?? 'error occur !!');
       },
+      refetchOnWindowFocus: false,
     },
   },
 });

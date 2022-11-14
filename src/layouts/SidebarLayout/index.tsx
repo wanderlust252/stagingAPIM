@@ -1,7 +1,9 @@
+import React from 'react';
 import { FC, ReactNode } from 'react';
 import { Box, alpha, lighten, useTheme } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { useIsFetching, useIsMutating } from '@tanstack/react-query';
+
 import Sidebar from './Sidebar';
 import Header from './Header';
 import SuspenseLoader from '@/components/SuspenseLoader';
@@ -48,7 +50,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = () => {
               ml: `${theme.sidebar.width}`,
             },
           }}>
-          <Box display="block">
+          <Box display="block" sx={{ padding: '20px' }}>
             <Outlet />
           </Box>
         </Box>

@@ -15,7 +15,8 @@ const Loader = (Component: TODO) => (props: TODO) =>
     </Suspense>
   );
 
-// Api
+// dashboard
+const Dashboard = Loader(lazy(() => import('@/pages/dashboard/views/Dashboard')));
 
 // agents tree view
 const AgentsTreeView = Loader(lazy(() => import('@/pages/agents/views/AgentsTreeView')));
@@ -38,11 +39,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Navigate to="/management/transactions" replace />,
-      },
-      {
-        path: 'overview',
-        element: <Navigate to="/" replace />,
+        element: <Navigate to="/dashboard" replace />,
       },
       {
         path: 'status',
@@ -74,6 +71,11 @@ const routes: RouteObject[] = [
         element: <Status404 />,
       },
     ],
+  },
+  {
+    path: '/dashboard',
+    element: <SidebarLayout />,
+    children: [{ path: '', element: <Dashboard /> }],
   },
   {
     path: '/agents',
