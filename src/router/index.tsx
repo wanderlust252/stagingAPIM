@@ -20,6 +20,7 @@ const Status404 = Loader(lazy(() => import('@/pages/Status/Status404')));
 const Status500 = Loader(lazy(() => import('@/pages/Status/Status500')));
 const StatusComingSoon = Loader(lazy(() => import('@/pages/Status/ComingSoon')));
 const StatusMaintenance = Loader(lazy(() => import('@/pages/Status/Maintenance')));
+const Login = Loader(lazy(() => import('@/pages/auth/views/Login')))
 
 const routes: RouteObject[] = [
   {
@@ -73,6 +74,10 @@ const routes: RouteObject[] = [
         element: <StatusComingSoon />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login/>
   },
 ];
 

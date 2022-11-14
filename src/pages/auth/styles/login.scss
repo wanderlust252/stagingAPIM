@@ -1,0 +1,69 @@
+.login__container {
+
+    display: flex;
+  
+    justify-content: center;
+  
+    align-items: center;
+  
+    height: 100vh;
+  
+    background-color: #F0F2F5;
+  
+    .login__wraper {
+  
+      width: 370px;
+  
+    }
+  
+    .full-w-btn {
+  
+      width: 100%;
+  
+      height: 45px !important;
+  
+      text-transform: uppercase;
+  
+      background-color: #04c142;
+  
+      border-color: #04c142;
+  
+      border-radius: 5px;
+  
+      margin-top: 10px;
+  
+    }
+  
+    .full-w-btn:hover {
+  
+      color: #fff;
+  
+      background-color: #039132;
+  
+      border-color: #039132;
+  
+      font-weight: bold;
+  
+    }
+  
+    .btn-success:focus {
+  
+      box-shadow: 0 0 0 1rem rgb(42, 202, 2%) !important;
+  
+    }
+  
+    .login__wraper-label {
+  
+      font-size: 16px;
+  
+      font-weight: bold;
+  
+      padding-bottom: 5px;
+  
+    }
+    .form-control.is-valid {
+       background-image: none;
+    }
+  
+  }
+  
