@@ -1,5 +1,6 @@
 import { LANGUAGE } from '@/interfaces/enum';
 import { createSlice } from '@reduxjs/toolkit';
+import i18n from '@/i18n';
 
 export interface CommonInitialState {
   collapse: boolean;
@@ -14,15 +15,13 @@ export const commonSlice = createSlice({
   name: 'common',
   initialState: initialState,
   reducers: {
-    collapseSidebar(state) {
-      state.collapse = !state.collapse;
-    },
     changeLanguageInput(state, action) {
+      i18n.changeLanguage(action.payload);
       state.languageInput = action.payload;
     },
   },
 });
 
-export const { collapseSidebar, changeLanguageInput } = commonSlice.actions;
+export const { changeLanguageInput } = commonSlice.actions;
 
 export default commonSlice.reducer;

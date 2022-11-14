@@ -1,0 +1,8 @@
+export enum TYPE_MODAL {
+  NONE,
+  CREATE_REF,
+  CHANGE_PW,
+  CHANGE_USERNAME,
+  CHANGE_POINT,
+  PAYMENT,
+}

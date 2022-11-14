@@ -90,7 +90,7 @@ function SidebarMenu() {
           );
         }
         return (
-          <SubMenuWrapper>
+          <SubMenuWrapper key={item.key}>
             <List component="div">
               <ListItem component="div">
                 <Button

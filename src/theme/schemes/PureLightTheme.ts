@@ -1,7 +1,7 @@
 import { alpha, createTheme, lighten, darken } from '@mui/material';
 import '@mui/lab/themeAugmentation';
 
-const themeColors = {
+export const themeColors = {
   primary: '#5569ff',
   secondary: '#6E759F',
   success: '#57CA22',
@@ -13,7 +13,7 @@ const themeColors = {
   primaryAlt: '#000C57',
 };
 
-const colors = {
+export const colors = {
   gradients: {
     blue1: 'linear-gradient(135deg, #6B73FF 0%, #000DFF 100%)',
     blue2: 'linear-gradient(135deg, #ABDCFF 0%, #0396FF 100%)',
