@@ -1,32 +1,21 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import { ITableProps } from '@/interfaces';
+import { TODO } from '@/interfaces/components';
 
-const ComponentTable: React.FC = () => {
+const ComponentTable = <R extends TODO>({ columnDefs, rowData, onGridReady }: ITableProps<R>) => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
-  const gridStyle = useMemo(() => ({ height: '400px', width: '100%' }), []);
-  const [rowData, setRowData] = useState();
-  const [columnDefs] = useState([
-    { field: 'athlete' },
-    { field: 'age' },
-    { field: 'country' },
-    { field: 'year' },
-    { field: 'date' },
-    { field: 'sport' },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
-  ]);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const defaultColDef = useMemo(() => {
     return {
-      editable: true,
+      editable: false,
+      sortable: true,
+      suppressAutoSize: false,
+      suppressRowClickSelection: false,
+      suppressColumnFilter: false,
+      suppressColumnSelectAll: false,
+      suppressColumnExpandAll: false,
     };
-  }, []);
-
-  const onGridReady = useCallback(() => {
-    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-      .then((resp) => resp.json())
-      .then((data) => setRowData(data));
   }, []);
 
   return (

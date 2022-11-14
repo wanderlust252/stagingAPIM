@@ -9,7 +9,7 @@ const BaseLayout: FC = ({ children }) => {
     <Box
       sx={{
         flex: 1,
-        height: '100%',
+        height: '100%'
       }}>
       {children || <Outlet />}
     </Box>

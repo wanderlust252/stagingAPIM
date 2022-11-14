@@ -2,6 +2,11 @@ import encode from '@/utils/encode';
 import { LANGUAGE } from '@/interfaces/enum';
 export const REFRESH_TOKEN = encode('refreshToken', 4);
 export const ACCESS_TOKEN = encode('accessToken', 4);
+export const EXPIRED_AT = 'expired_at'
+
+export enum QUERY_KEYS {
+  DASHBOARD = 'dashboard',
+}
 
 export const backgroundImg = [
   'linear-gradient(180deg, #ff9634, #e76f00)',

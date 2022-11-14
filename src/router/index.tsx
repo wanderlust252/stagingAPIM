@@ -22,7 +22,6 @@ const Dashboard = Loader(lazy(() => import('@/pages/dashboard/views/Dashboard'))
 const AgentsTreeView = Loader(lazy(() => import('@/pages/agents/views/AgentsTreeView')));
 
 // transactions
-const Transactions = Loader(lazy(() => import('@/pages/Transactions')));
 
 // Status
 
@@ -30,7 +29,8 @@ const Status404 = Loader(lazy(() => import('@/pages/Status/Status404')));
 const Status500 = Loader(lazy(() => import('@/pages/Status/Status500')));
 const StatusComingSoon = Loader(lazy(() => import('@/pages/Status/ComingSoon')));
 const StatusMaintenance = Loader(lazy(() => import('@/pages/Status/Maintenance')));
-const Login = Loader(lazy(() => import('@/pages/auth/views/Login')))
+const Login = Loader(lazy(() => import('@/pages/auth/views/Login')));
+const AgentManagementPage = Loader(lazy(() => import('@/pages/agents/views/agentList/Agent-List')));
 
 const routes: RouteObject[] = [
   {
@@ -64,6 +64,10 @@ const routes: RouteObject[] = [
             path: 'coming-soon',
             element: <StatusComingSoon />,
           },
+          {
+            path: '/login',
+            element: <Login />,
+          },
         ],
       },
       {
@@ -80,11 +84,13 @@ const routes: RouteObject[] = [
   {
     path: '/agents',
     element: <SidebarLayout />,
-    children: [{ path: '', element: <AgentsTreeView /> }],
-  },
-  {
-    path: '/login',
-    element: <Login/>
+    children: [
+      { path: '', element: <AgentsTreeView /> },
+      {
+        path: 'list',
+        element: <AgentManagementPage />,
+      },
+    ],
   },
 ];
 

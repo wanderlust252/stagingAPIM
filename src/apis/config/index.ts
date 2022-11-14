@@ -1,5 +1,5 @@
 import { APP_CONFIG } from '@/utils/env';
-import axios, { AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as CONSTANT from '@/interfaces/constants';
 import { getStorageItem, setStorageItem } from '@/utils/storage';
 import { IResponseApi, TODO } from '@/interfaces';
@@ -19,9 +19,26 @@ class RequestApi {
       'Content-Type': 'application/json',
     };
 
-    axios.interceptors.request.use((config) => {
+    axios.interceptors.request.use((config: AxiosRequestConfig<any>) => {
+      // handle refresh token with request
+      if (
+        (config?.url && config?.url?.indexOf('/auth-service/login') >= 0) ||
+        (config?.url && config.url?.indexOf('/auth-service/refresh-token') >= 0)
+      ) {
+        return config;
+      }
+      const token = getStorageItem(CONSTANT.ACCESS_TOKEN);
+      const exp_at = getStorageItem(CONSTANT.EXPIRED_AT) as string;
+      // write function refresh token in here
+      const now = new Date().getTime();
+      if (exp_at < now.toString(now)) {
+        try {
+          // call function is here
+        } catch (error) {
+          console.log('error', error);
+        }
+      }
       if (config && config.headers) {
-        const token = getStorageItem(CONSTANT.ACCESS_TOKEN);
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
