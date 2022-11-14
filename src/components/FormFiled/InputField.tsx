@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import { Controller } from 'react-hook-form';
 interface InputFieldProps {
   label: string;
@@ -8,7 +9,8 @@ interface InputFieldProps {
   placeholder: string;
   name: string;
   errors?: any;
-  control: any;
+  control?: any;
+  icon?: ReactNode;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -19,6 +21,7 @@ const InputField: React.FC<InputFieldProps> = ({
   controlId,
   errors,
   control,
+  icon,
 }: InputFieldProps) => {
   console.log(errors?.[name]?.message);
 
@@ -30,16 +33,19 @@ const InputField: React.FC<InputFieldProps> = ({
         name={name}
         render={({ field: { onChange, onBlur, value, ref } }) => {
           return (
-            <Form.Control
-              type={type}
-              isValid={errors}
-              placeholder={placeholder}
-              value={value}
-              ref={ref}
-              name={name}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
+            <div style={{ display: 'flex' }}>
+              {icon && <InputGroup.Text>{icon}</InputGroup.Text>}
+              <Form.Control
+                type={type}
+                isValid={errors}
+                placeholder={placeholder}
+                value={value}
+                ref={ref}
+                name={name}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            </div>
           );
         }}
       />
