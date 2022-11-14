@@ -7,3 +7,5 @@ export interface ITableProps<T> {
   columnDefs: IColumn[];
   onGridReady: () => void;
 }
+
+export type TODO = any;

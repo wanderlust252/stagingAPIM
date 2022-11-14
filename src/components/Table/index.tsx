@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { ITableProps } from '@/interfaces';
+import { TODO } from '@/interfaces/components';
 
-const ComponentTable = <R extends any>({ columnDefs, rowData, onGridReady }: ITableProps<R>) => {
+const ComponentTable = <R extends TODO>({ columnDefs, rowData, onGridReady }: ITableProps<R>) => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
   const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const defaultColDef = useMemo(() => {
