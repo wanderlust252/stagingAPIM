@@ -8,7 +8,6 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import GroupsIcon from '@mui/icons-material/Groups';
 
 import CardItem from '../components/CardItem';
-import { useDashboardQuery } from '@/apis/service/dashboard';
 
 interface ICard {
   title: string;
@@ -18,7 +17,7 @@ interface ICard {
 }
 
 export default function Dashboard() {
-  const { data } = useDashboardQuery('https://jsonplaceholder.typicode.com/todos');
+  // const { data } = useDashboardQuery('https://jsonplaceholder.typicode.com/todos');
   const { t } = useTranslation();
   const List: ICard[] = [
     {
