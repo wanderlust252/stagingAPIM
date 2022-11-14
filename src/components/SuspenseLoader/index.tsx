@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import NProgress from 'nprogress';
 import { CircularProgress } from '@mui/material';
+import NProgress from 'nprogress';
 import { Loading } from './style';
 
 function SuspenseLoader() {

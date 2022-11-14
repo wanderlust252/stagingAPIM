@@ -5,3 +5,7 @@ export enum LANGUAGE {
 export enum RootAction {
   LOGOUT = 'LOGOUT',
 }
+
+export enum QUERY_KEYS {
+  DASHBOARD = 'dashboard',
+}
