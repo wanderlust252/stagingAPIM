@@ -22,7 +22,6 @@ const Dashboard = Loader(lazy(() => import('@/pages/dashboard/views/Dashboard'))
 const AgentsTreeView = Loader(lazy(() => import('@/pages/agents/views/AgentsTreeView')));
 
 // transactions
-const Transactions = Loader(lazy(() => import('@/pages/Transactions')));
 
 // Status
 
