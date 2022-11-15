@@ -9,8 +9,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { validator } from './validator/validator';
 import { useLogin } from '@/apis/service';
 import { Account } from '@/interfaces';
+import { useNavigate } from 'react-router-dom';
+import { setStorageItem } from '@/utils/storage';
+import * as CONSTANT from '@/interfaces/constants';
 
 const Login: React.FC = (): JSX.Element => {
+  const navigation = useNavigate();
   const { mutate, isLoading } = useLogin();
   const {
     handleSubmit,
@@ -24,7 +28,10 @@ const Login: React.FC = (): JSX.Element => {
       username: values.username,
       password: values.password,
     };
-    mutate(payload);
+    setStorageItem(CONSTANT.ACCESS_TOKEN, 'data?.jwtToken');
+    setStorageItem(CONSTANT.REFRESH_TOKEN, 'data?.refreshToken');
+    navigation('/dashboard');
+    // mutate(payload);
   };
   return (
     <div className="login__container">
