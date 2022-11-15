@@ -113,8 +113,8 @@ function Header() {
               )}`,
       }}>
       <Box marginLeft={'auto'} sx={{ width: '70%' }} display="flex" alignItems="center" justifyContent="flex-end">
-        <Box display="flex" justifyContent={'space-between'} sx={{ width: '58%' }}>
-          <Box>
+        <Box display="flex" justifyContent={'space-between'}>
+          <Box style={{ marginRight: '15px' }}>
             <InputGroup className="mb-0">
               <InputGroup.Text>P</InputGroup.Text>
               <Form.Control aria-label="Amount (to the nearest dollar)" value={0} />
