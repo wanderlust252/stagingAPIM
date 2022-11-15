@@ -20,6 +20,7 @@ import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
 import { useTranslation } from 'react-i18next';
+import { useLogout } from '../../../../apis/service/auth';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -59,6 +60,7 @@ const UserBoxDescription = styled(Typography)(
 
 function HeaderUserbox() {
   const { t } = useTranslation();
+  const { mutate } = useLogout();
   const user = {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg',
@@ -126,7 +128,7 @@ function HeaderUserbox() {
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button color="primary" fullWidth>
+          <Button color="primary" fullWidth onClick={() => mutate({})}>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             {t('header.logout')}
           </Button>

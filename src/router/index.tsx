@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import { RouteObject } from 'react-router';
 
 import SidebarLayout from '@/layouts/SidebarLayout';
 import BaseLayout from '@/layouts/BaseLayout';
@@ -33,15 +32,19 @@ const StatusComingSoon = Loader(lazy(() => import('@/pages/Status/ComingSoon')))
 const StatusMaintenance = Loader(lazy(() => import('@/pages/Status/Maintenance')));
 const Login = Loader(lazy(() => import('@/pages/auth/views/Login')));
 const AgentManagementPage = Loader(lazy(() => import('@/pages/agents/views/agentList/Agent-List')));
+const AgentPointTransaction = Loader(
+  lazy(() => import('@/pages/agents/views/agentPointTransaction/AgentPointTransaction')),
+);
+const AgentCash = Loader(lazy(() => import('@/pages/agents/views/agentCash/AgentCash')));
 
-const routes: RouteObject[] = [
+const routes = (isLoggedIn: boolean) => [
   {
-    path: '',
-    element: <BaseLayout />,
+    path: '/',
+    element: !isLoggedIn ? <BaseLayout /> : <Navigate to="/dashboard" />,
     children: [
       {
-        path: '/',
-        element: <Navigate to="/dashboard" replace />,
+        path: 'login',
+        element: <Login />,
       },
       {
         path: 'status',
@@ -79,18 +82,33 @@ const routes: RouteObject[] = [
     ],
   },
   {
-    path: '/dashboard',
-    element: <SidebarLayout />,
-    children: [{ path: '', element: <Dashboard /> }],
-  },
-  {
-    path: '/agents',
-    element: <SidebarLayout />,
+    path: '/',
+    element: isLoggedIn ? <SidebarLayout /> : <Navigate to="/login" />,
     children: [
-      { path: '', element: <AgentsTreeView /> },
       {
-        path: 'list',
-        element: <AgentManagementPage />,
+        path: 'dashboard',
+        element: <Dashboard />,
+      },
+      {
+        path: 'agents',
+        children: [
+          {
+            path: 'list',
+            element: <AgentManagementPage />,
+          },
+          {
+            path: 'tree-view',
+            element: <AgentsTreeView />,
+          },
+          {
+            path: 'point-transactions',
+            element: <AgentPointTransaction />,
+          },
+          {
+            path: 'cash-transactions',
+            element: <AgentCash />,
+          },
+        ],
       },
     ],
   },

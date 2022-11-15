@@ -22,22 +22,22 @@ class RequestApi {
     axios.interceptors.request.use((config: AxiosRequestConfig<any>) => {
       // handle refresh token with request
       if (
-        (config?.url && config?.url?.indexOf('/auth-service/login') >= 0) ||
-        (config?.url && config.url?.indexOf('/auth-service/refresh-token') >= 0)
+        (config?.url && config?.url?.indexOf('/auth-service/authentication/login') !== 0) ||
+        (config?.url && config.url?.indexOf('/auth-service/authentication/login') !== 0)
       ) {
         return config;
       }
       const token = getStorageItem(CONSTANT.ACCESS_TOKEN);
-      const exp_at = getStorageItem(CONSTANT.EXPIRED_AT) as string;
-      // write function refresh token in here
-      const now = new Date().getTime();
-      if (exp_at < now.toString(now)) {
-        try {
-          // call function is here
-        } catch (error) {
-          console.log('error', error);
-        }
-      }
+      // const exp_at = getStorageItem(CONSTANT.EXPIRED_AT) as string;
+      // // write function refresh token in here
+      // const now = new Date().getTime();
+      // if (exp_at < now.toString(now)) {
+      //   try {
+      //     // call function is here
+      //   } catch (error) {
+      //     console.log('error', error);
+      //   }
+      // }
       if (config && config.headers) {
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;

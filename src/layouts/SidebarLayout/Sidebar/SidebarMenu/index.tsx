@@ -26,7 +26,7 @@ function SidebarMenu() {
         {
           key: 3,
           label: `${t('sidebar.agent.tree')}`,
-          path: '/agents/',
+          path: '/agents/tree-view',
         },
         {
           key: 4,

@@ -5,20 +5,26 @@ import InputField from '../../../components/FormFiled/InputField';
 import '../styles/login.scss';
 import { Box } from '@mui/material';
 import Loading from '@/components/loading/loading';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { validator } from './validator/validator';
+import { useLogin } from '@/apis/service';
+import { Account } from '@/interfaces';
 
 const Login: React.FC = (): JSX.Element => {
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const { mutate, isLoading } = useLogin();
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({
+  } = useForm<Account>({
     resolver: validator(),
   });
-  const onSubmit = (values: any) => {
-    console.log('Success:', values);
+  const onSubmit: SubmitHandler<Account> = (values) => {
+    const payload = {
+      username: values.username,
+      password: values.password,
+    };
+    mutate(payload);
   };
   return (
     <div className="login__container">
@@ -45,7 +51,7 @@ const Login: React.FC = (): JSX.Element => {
           />
           <Box>
             <Button type="submit" className="login-form-button full-w-btn">
-              {loading && <Loading />}
+              {isLoading && <Loading />}
               LOG IN
             </Button>
           </Box>

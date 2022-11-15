@@ -72,7 +72,7 @@ export default function AgentListPage() {
         <BreadcrumbsComponent content={breadcrumbs} />
       </div>
       <div className="agent__list-container_content">
-        <div style={{ backgroundColor: '#ccc', padding: '10px' }}>
+        <div style={{ backgroundColor: '#ccc', padding: '10px', borderRadius: '5px' }}>
           <p>{t('agent-management.table.agent-list')}</p>
         </div>
         <div className="agent__list-container_content_table">
