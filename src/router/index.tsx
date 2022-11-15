@@ -20,6 +20,10 @@ const Dashboard = Loader(lazy(() => import('@/pages/dashboard/views/Dashboard'))
 
 // agents tree view
 const AgentsTreeView = Loader(lazy(() => import('@/pages/agents/views/AgentsTreeView')));
+// Api
+const Setting = Loader(lazy(() => import('@/pages/setting/views')));
+// transactions
+const Transactions = Loader(lazy(() => import('@/pages/Transactions')));
 
 // Status
 
@@ -87,6 +91,16 @@ const routes: RouteObject[] = [
       {
         path: 'list',
         element: <AgentManagementPage />,
+      },
+    ],
+  },
+  {
+    path: '/setting',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: '',
+        element: <Setting />,
       },
     ],
   },

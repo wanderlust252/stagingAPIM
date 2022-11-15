@@ -1,0 +1,35 @@
+.box-form {
+  margin-top: 2em;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.border-form {
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 0 0px 10px 10px;
+}
+.box-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-bottom {
+  display: flex;
+  justify-items: flex-end;
+}
+.text-header {
+  font-size: 22px;
+  font-weight: bold;
+}
+.-mb-2 {
+  margin-bottom: -2px;
+}
+
+
+.img {
+  margin: auto;
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 100%;
+}

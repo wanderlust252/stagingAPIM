@@ -1,5 +1,6 @@
-import { Box, Button, Card, Container, Typography } from '@mui/material';
-import { MainContent } from './style';
+import { Box, Card, Typography, Container, Divider, Button, FormControl, InputAdornment } from '@mui/material';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import { MainContent, OutlinedInputWrapper, ButtonSearch } from './style';
 
 function Status404() {
   return (
