@@ -11,6 +11,7 @@ interface InputFieldProps {
   errors?: any;
   control?: any;
   icon?: ReactNode;
+  defaultValue?:string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -22,8 +23,8 @@ const InputField: React.FC<InputFieldProps> = ({
   errors,
   control,
   icon,
+  defaultValue
 }: InputFieldProps) => {
-  console.log(errors?.[name]?.message);
 
   return (
     <Form.Group controlId={controlId} style={{ marginBottom: '15px' }}>

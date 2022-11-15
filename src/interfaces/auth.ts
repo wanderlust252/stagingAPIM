@@ -1,16 +1,11 @@
 export interface Account {
-  agent_id: string;
+  username: string;
   password: string;
 }
 
 export interface LoginResponse {
-  success: string;
-  code: string;
-  message: string;
-  data: {
-    token: string;
-    expired_at: string;
-  };
+  jwtToken: string;
+  refreshToken: string;
 }
 
 export interface LogoutResponse {
