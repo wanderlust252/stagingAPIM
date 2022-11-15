@@ -21,6 +21,7 @@ const PaymentForm: React.FC<IPaymentForm> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="new_password">{t('agents.paymentForm.amount_request')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
@@ -34,10 +35,11 @@ const PaymentForm: React.FC<IPaymentForm> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="confirm_pw">{t('agents.paymentForm.note')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
-          type="password"
+          type="text"
           id="note"
           {...register('note', {
             required: `${t('agents.paymentForm.note')} ${validateMessage[language].required}`,

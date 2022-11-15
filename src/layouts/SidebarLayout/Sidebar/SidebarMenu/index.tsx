@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Button, List, ListItem, ListSubheader } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, Link } from 'react-router-dom';
 
 import { SidebarContext } from 'src/contexts/SidebarContext';
 import { MenuTile, MenuWrapper, SubMenuWrapper, TextTile } from './style';
@@ -16,7 +16,7 @@ function SidebarMenu() {
       key: 1,
       label: `${t('sidebar.dashboard')}`,
       icon: <Dashboard />,
-      path: '/',
+      path: '/dashboard',
     },
     {
       key: 2,
@@ -26,7 +26,7 @@ function SidebarMenu() {
         {
           key: 3,
           label: `${t('sidebar.agent.tree')}`,
-          path: '/agents',
+          path: '/agents/',
         },
         {
           key: 4,

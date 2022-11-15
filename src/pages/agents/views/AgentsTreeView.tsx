@@ -51,6 +51,7 @@ const AgentsTreeView = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [typeModal, setTypeModal] = useState(TYPE_MODAL.NONE);
@@ -124,7 +125,7 @@ const AgentsTreeView = () => {
       </Row>
 
       {show && (
-        <AgentTreeModal title={titleModal[typeModal]} show={show} closeModal={closeModal}>
+        <AgentTreeModal reset={reset} title={titleModal[typeModal]} show={show} closeModal={closeModal}>
           <Form id="hook-form" onSubmit={handleSubmit(onSubmit)}>
             {getModalByType()}
           </Form>

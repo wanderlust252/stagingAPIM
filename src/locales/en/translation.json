@@ -15,7 +15,7 @@
       "agent-list": "Agent List",
       "agent-management": "Agent Management",
       "home": "Home",
-      "searchLabel":"Search",
+      "searchLabel": "Search",
       "search": "Please enter your search term.",
       "athlete": "Athlete",
       "age": "Age",
@@ -43,7 +43,8 @@
       "confirm": "Do you want to continue ?",
       "error": "An error occurred, please try again",
       "success": "create successfully"
-    }
+    },
+    "choose": "choose"
   },
   "role": {},
   "agents": {

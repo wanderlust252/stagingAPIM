@@ -19,6 +19,7 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="username">{t('agents.referralForm.agent_parent')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
@@ -32,6 +33,7 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="nick_name">{t('agents.referralForm.username')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
@@ -45,6 +47,7 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="id">{t('agents.referralForm.user')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
@@ -58,10 +61,11 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="pw">{t('agents.referralForm.password')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
-          type="text"
+          type="password"
           id="pw"
           {...register('pw', {
             required: `${t('agents.referralForm.password')} ${validateMessage[language].required}`,
@@ -71,6 +75,7 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="confirm_pw">{t('agents.referralForm.password_confirm')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
@@ -84,10 +89,11 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="point_rate">{t('agents.referralForm.percent_point')}</Form.Label>
         <Form.Control
+          autoComplete="off"
           required
           as={'input'}
           size="sm"
-          type="text"
+          type="number"
           id="point_rate"
           {...register('point_rate', {
             required: `${t('agents.referralForm.percent_point')} ${validateMessage[language].required}`,
@@ -97,10 +103,12 @@ const TreeReferralForm: React.FC<TreeReferralFormProps> = ({ register }) => {
       <Box>
         <Form.Label htmlFor="agent_privileges">{t('agents.referralForm.agent_privileges')}</Form.Label>
         <Form.Select
+          autoComplete="off"
+          defaultValue={undefined}
+          placeholder={t('common.choose')}
           {...register('agent_privileges', {
             required: `${t('agents.referralForm.agent_privileges')} ${validateMessage[language].required}`,
           })}>
-          <option value="0">Choose</option>
           <option value="1">AgentA</option>
           <option value="2">AgentB</option>
           <option value="3">AgentC</option>
