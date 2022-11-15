@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Controller } from 'react-hook-form';
+import './styles.scss';
 interface InputFieldProps {
   label: string;
   type: string;
@@ -11,7 +12,7 @@ interface InputFieldProps {
   errors?: any;
   control?: any;
   icon?: ReactNode;
-  defaultValue?:string;
+  defaultValue?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -23,8 +24,9 @@ const InputField: React.FC<InputFieldProps> = ({
   errors,
   control,
   icon,
-  defaultValue
+  defaultValue,
 }: InputFieldProps) => {
+  console.log('errrr', errors?.[name]?.message);
 
   return (
     <Form.Group controlId={controlId} style={{ marginBottom: '15px' }}>
