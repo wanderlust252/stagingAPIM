@@ -15,7 +15,7 @@
       "agent-list": "에이전트 목록",
       "agent-management": "에이전트 관리",
       "home": "집",
-      "searchLabel":"검색",
+      "searchLabel": "검색",
       "search": "검색어를 입력하세요.",
       "athlete": "운동선수",
       "age": "나이",
@@ -40,6 +40,7 @@
     "cancel": "Hủy",
     "overview": "Tổng quan",
     "number": "명",
+    "choose": "부를",
 
     "modal": {
       "confirm": "하부를 생성 하시겠습니까?",

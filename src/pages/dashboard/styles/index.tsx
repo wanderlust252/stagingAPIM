@@ -8,6 +8,8 @@ export const Wrapper = styled.div<{ bgColor: string }>`
   overflow: hidden;
   & {
     .cardItem {
+      height: 8rem;
+      max-height: 8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,7 +29,6 @@ export const Wrapper = styled.div<{ bgColor: string }>`
         margin-top: 1rem;
         font-weight: 600;
         line-height: 1;
-        text-transform: uppercase;
       }
       &__icon {
         padding-right: 0.5rem;

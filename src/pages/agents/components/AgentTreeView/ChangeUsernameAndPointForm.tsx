@@ -18,10 +18,11 @@ const ChangePoint: React.FC<ChangeUsernameAndPointProps> = ({ register }) => {
     <Box sx={{ pb: 1.4 }}>
       <Form.Label htmlFor="point_rate">{t('agents.changePointForm.percent_point')}</Form.Label>
       <Form.Control
+        autoComplete="off"
         required
         as={'input'}
         size="sm"
-        type="text"
+        type="number"
         id="point_rate"
         {...register('point_rate', {
           required: `${t('agents.changePointForm.percent_point')} ${validateMessage[language].required}`,
@@ -39,6 +40,7 @@ const ChangeUsername: React.FC<ChangeUsernameAndPointProps> = ({ register }) => 
     <Box sx={{ pb: 1.4 }}>
       <Form.Label htmlFor="username">{t('agents.changeUsernameForm.new_username')}</Form.Label>
       <Form.Control
+        autoComplete="off"
         required
         as={'input'}
         size="sm"
