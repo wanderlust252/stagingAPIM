@@ -22,6 +22,8 @@ import { useTranslation } from 'react-i18next';
 import { LANGUAGE } from '@/interfaces/enum';
 import { useAppDispatch } from '@/hooks/hooks';
 import { changeLanguageInput } from '@/store/common/commonSlice';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }: any) => `
@@ -110,7 +112,23 @@ function Header() {
                 0.1,
               )}`,
       }}>
-      <Box marginLeft={'auto'} sx={{ width: '50%' }} display="flex" alignItems="center" justifyContent="flex-end">
+      <Box marginLeft={'auto'} sx={{ width: '70%' }} display="flex" alignItems="center" justifyContent="flex-end">
+        <Box display="flex" justifyContent={'space-between'} sx={{ width: '58%' }}>
+          <Box>
+            <InputGroup className="mb-0">
+              <InputGroup.Text>P</InputGroup.Text>
+              <Form.Control aria-label="Amount (to the nearest dollar)" value={0} />
+              <InputGroup.Text>POINT</InputGroup.Text>
+            </InputGroup>
+          </Box>
+          <Box>
+            <InputGroup className="mb-0">
+              <InputGroup.Text>₩</InputGroup.Text>
+              <Form.Control aria-label="Amount (to the nearest dollar)" value={0} />
+              <InputGroup.Text>KRW</InputGroup.Text>
+            </InputGroup>
+          </Box>
+        </Box>
         <HeaderButtons />
         <ChangeLanguage onChange={onChangeInput} defaultValue={LANGUAGE.KR}>
           <MenuItem value={LANGUAGE.KR}>Korean</MenuItem>
